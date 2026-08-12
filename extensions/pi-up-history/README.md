@@ -13,7 +13,7 @@ Seeds Pi's native editor history from previous saved sessions for the current wo
 ## Install
 
 ```bash
-pi install npm:@richardgill/pi-up-history
+pi install git:github.com/edheltzel/pi-extensions
 ```
 
 Development:

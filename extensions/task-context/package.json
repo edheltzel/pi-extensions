@@ -24,8 +24,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
-    "@richardgill/pi-file-collector": "workspace:*",
+    "@richardgill/pi-config": "file:../../packages/pi-config",
+    "@richardgill/pi-file-collector": "file:../file-collector",
     "zod": "4.3.6"
   },
   "peerDependencies": {

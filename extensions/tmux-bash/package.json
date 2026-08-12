@@ -22,9 +22,9 @@
     "tsc": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@richardgill/lib": "workspace:*",
-    "@richardgill/pi-config": "workspace:*",
-    "@richardgill/pi-zod-tool-call": "workspace:*",
+    "@richardgill/lib": "file:../../packages/lib",
+    "@richardgill/pi-config": "file:../../packages/pi-config",
+    "@richardgill/pi-zod-tool-call": "file:../../packages/pi-zod-tool-call",
     "zod": "4.3.6"
   },
   "peerDependencies": {

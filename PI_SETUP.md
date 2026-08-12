@@ -1,18 +1,15 @@
 # My Pi setup
 
 - I use Pi with OpenAI Codex `gpt-5.6-sol` at the High thinking level (OpenAI has a generous policy allowing you to use your own harness)
-- My [`AGENTS.md`](https://github.com/richardgill/nix/blob/main/built/ai-agents/pi/AGENTS.md?plain=1) ([template](https://github.com/richardgill/nix/blob/main/flake/modules/home-manager/dot-files/ai-agents/shared/partials/AGENTS.md.hbs?plain=1))
-- My Pi [`settings.json`](https://github.com/richardgill/nix/blob/main/out-of-store-config/ai-agents/pi/settings.json)
-
-I only use `AGENTS.md` + skills.
+- I only use `AGENTS.md` + skills.
 
 Pi's [philosophy](https://mariozechner.at/posts/2025-11-30-pi-coding-agent/) is to keep things simple and not overdo it with bells and whistles.
 
 Jump to [Install all extensions](#install-all-extensions).
 
-## Install the Atlas Git collection
+## Install the Git collection
 
-The repository root exposes the Atlas-owned Anti-Slop, Better Ask User, and Better BTW resources as one Git package:
+The repository root loads Atlas-owned resources and the inherited Richard Gill stack as one Git package. Do not also install `npm:@richardgill/*` copies of the same extensions.
 
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
@@ -20,19 +17,16 @@ pi install git:github.com/edheltzel/pi-extensions
 
 Update the unpinned Git package with `pi update git:github.com/edheltzel/pi-extensions` or update every installed extension package with `pi update --extensions`.
 
+`background-bash` and `tmux-bash` both replace Pi's bash tool. Disable the one you do not want with `pi config`.
+
 ## Run bash commands in the background
 
 - Overrides Pi's built-in `bash` tool with a replacement that runs commands in the background.
 - Commands taking over 30 seconds move to the background by default.
-  - Prevents the agent from getting stuck if it runs `sleep 999999999999` by accident.
 - Background processes trigger an LLM turn when they complete.
 - See running processes and kill them with `/proc`.
 
-```sh
-pi install npm:@richardgill/pi-background-bash
-```
-
-[Source and documentation](./extensions/background-bash/README.md)
+Loaded by the Git collection from [`extensions/background-bash`](./extensions/background-bash/README.md).
 
 ## Load custom `CLAUDE.md` and `.claude/skills`
 
@@ -49,52 +43,19 @@ pi install npm:@richardgill/pi-background-bash
 }
 ```
 
-For example:
-
-```text
-~/code/
-├── AGENTS.local.md
-└── my-app/
-    ├── CLAUDE.local.md
-    ├── .pi/skills/review/SKILL.md
-    └── packages/api/
-        ├── AGENTS.local.md
-        └── .claude/skills/database/SKILL.md
-```
-
-Starting Pi in `~/code/my-app/packages/api` loads all three instruction files and both skills.
-
-```sh
-pi install npm:@richardgill/pi-project-resources
-```
-
-[Source and documentation](./extensions/project-resources/README.md)
+Loaded by the Git collection from [`extensions/project-resources`](./extensions/project-resources/README.md).
 
 ## Subagents / tasks
 
-Pi is aware of my tmux setup and can spawn new Pi windows and worktrees using the [tmux-pi](https://github.com/richardgill/nix/blob/main/built/ai-agents/pi/skills/tmux-pi/SKILL.md?plain=1) skill.
-
-But if you're looking for "sub agents" directly in Pi, check out my [`sub-pi`](./extensions/sub-pi/README.md) and [`sub-pi-skill`](./extensions/sub-pi-skill/README.md) extensions which I used for a long time (be warned: it's not as polished as Claude Code or Codex).
+For in-Pi subprocesses, use [`sub-pi`](./extensions/sub-pi/README.md) and [`sub-pi-skill`](./extensions/sub-pi-skill/README.md). Both load from the Git collection.
 
 ## Up arrow remembers prompts from previous sessions
 
-Pressing the up arrow shows prompts from previous Pi sessions, similar to Claude Code.
-
-```sh
-pi install npm:@richardgill/pi-up-history
-```
-
-[Source and documentation](./extensions/pi-up-history/README.md)
+Pressing the up arrow shows prompts from previous Pi sessions. Loaded by the Git collection from [`extensions/pi-up-history`](./extensions/pi-up-history/README.md).
 
 ## Load command output straight into context
 
 Registers slash commands that run commands and put their output into Pi's context.
-
-Example, `/diff` runs `git diff` and immediately populates the context window without an LLM turn.
-
-```sh
-pi install npm:@richardgill/pi-context-commands
-```
 
 ```jsonc
 // ~/.pi/agent/extension-config/context-commands.jsonc
@@ -116,18 +77,14 @@ pi install npm:@richardgill/pi-context-commands
 }
 ```
 
-[Source and documentation](./extensions/context-commands/README.md)
+Loaded by the Git collection from [`extensions/context-commands`](./extensions/context-commands/README.md).
 
-## `pi-bits`: the rest of my personal setup
+## Footer and project trust
 
-- A compact footer showing the model, thinking level, context usage, and extension statuses.
-- Automatically trust every new folder - bypassing Pi's project trust prompt.
+- Compact footer: model, thinking level, context usage, and extension statuses
+- Automatically trust every new folder
 
-```sh
-pi install npm:@richardgill/pi-bits
-```
-
-[Source and documentation](./packages/pi-bits/README.md)
+Loaded by the Git collection from [`extensions/footer`](./extensions/footer/README.md) and [`extensions/trust-all-projects`](./extensions/trust-all-projects/README.md). Do not also install `npm:@richardgill/pi-bits`.
 
 ## Install Pi Atelier
 
@@ -166,11 +123,6 @@ pi install npm:pi-codex-status
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
 pi install npm:pi-atelier
-pi install npm:@richardgill/pi-bits
-pi install npm:@richardgill/pi-background-bash
-pi install npm:@richardgill/pi-context-commands
-pi install npm:@richardgill/pi-project-resources
-pi install npm:@richardgill/pi-up-history
 pi install npm:@calesennett/pi-codex-fast
 pi install npm:pi-codex-status
 ```

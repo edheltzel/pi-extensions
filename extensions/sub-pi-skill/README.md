@@ -31,8 +31,7 @@ metadata:
 ## Install with pi
 
 ```bash
-pi install npm:@richardgill/pi-sub-pi
-pi install npm:@richardgill/pi-sub-pi-skill
+pi install git:github.com/edheltzel/pi-extensions
 ```
 
 or locally

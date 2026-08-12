@@ -60,7 +60,7 @@ importers:
         specifier: '*'
         version: 0.83.0
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       typebox:
         specifier: '*'
@@ -75,7 +75,7 @@ importers:
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -90,7 +90,7 @@ importers:
         specifier: '*'
         version: 0.83.0
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -102,7 +102,7 @@ importers:
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -147,7 +147,7 @@ importers:
         specifier: '*'
         version: 0.83.0
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -198,7 +198,7 @@ importers:
         specifier: '*'
         version: 0.83.0
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -219,7 +219,7 @@ importers:
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -231,7 +231,7 @@ importers:
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -252,7 +252,7 @@ importers:
         specifier: '*'
         version: 0.83.0
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       '@sinclair/typebox':
         specifier: '*'
@@ -267,7 +267,7 @@ importers:
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       zod:
         specifier: 4.3.6
@@ -282,10 +282,10 @@ importers:
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       '@richardgill/pi-file-collector':
-        specifier: workspace:*
+        specifier: file:../file-collector
         version: link:../file-collector
       zod:
         specifier: 4.3.6
@@ -309,13 +309,13 @@ importers:
         specifier: '*'
         version: 0.83.0
       '@richardgill/lib':
-        specifier: workspace:*
+        specifier: file:../../packages/lib
         version: link:../../packages/lib
       '@richardgill/pi-config':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-config
         version: link:../../packages/pi-config
       '@richardgill/pi-zod-tool-call':
-        specifier: workspace:*
+        specifier: file:../../packages/pi-zod-tool-call
         version: link:../../packages/pi-zod-tool-call
       '@sinclair/typebox':
         specifier: '*'

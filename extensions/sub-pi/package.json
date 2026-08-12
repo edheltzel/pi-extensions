@@ -18,7 +18,7 @@
     ".": "./src/extension.ts"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@richardgill/pi-config": "file:../../packages/pi-config",
     "zod": "4.3.6"
   },
   "peerDependencies": {

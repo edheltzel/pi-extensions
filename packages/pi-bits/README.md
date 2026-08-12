@@ -11,13 +11,13 @@ A Pi package containing two independent extensions:
 ## Try without installing
 
 ```sh
-pi -e npm:@richardgill/pi-bits
+pi -e git:github.com/edheltzel/pi-extensions
 ```
 
 ## Install
 
 ```sh
-pi install npm:@richardgill/pi-bits
+pi install git:github.com/edheltzel/pi-extensions
 ```
 
 Pi loads each bundled extension separately, so each can be enabled or disabled independently with `pi config`.

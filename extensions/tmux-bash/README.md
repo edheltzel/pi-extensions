@@ -21,7 +21,7 @@ Drop-in `bash` replacement that runs commands in the background using tmux.
 ## Install 
 
 ```bash
-pi install npm:@richardgill/pi-tmux-bash
+pi install git:github.com/edheltzel/pi-extensions
 ```
 Then:
 
@@ -32,7 +32,7 @@ pi 'Run: for i in $(seq 1 90); do echo "$i"; sleep 1; done. Poll every 10s.'
 Or try it out without installing:
 
 ```bash
-pi -e npm:@richardgill/pi-tmux-bash 'Run: for i in $(seq 1 90); do echo "$i"; sleep 1; done. Poll every 10s.'
+pi -e git:github.com/edheltzel/pi-extensions 'Run: for i in $(seq 1 90); do echo "$i"; sleep 1; done. Poll every 10s.'
 ```
 
 See [Configuration](#configuration) for defaults and overrides.

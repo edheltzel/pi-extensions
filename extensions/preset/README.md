@@ -7,7 +7,7 @@ Part of [`pi-extensions`](../../README.md).
 ## Install with pi
 
 ```bash
-pi install npm:@richardgill/pi-preset
+pi install git:github.com/edheltzel/pi-extensions
 ```
 
 or locally
