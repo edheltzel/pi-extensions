@@ -1,6 +1,6 @@
 # pi-extensions
 
-> ### [My Pi Setup →](./PI_SETUP.md)
+> ### [My Setup →](./PI_SETUP.md)
 
 This repository uses `extensions/` for owned Pi extension workspaces and `packages/` for shared libraries or composite distributions. Third-party extensions are installed through Pi package sources rather than copied into the workspace.
 
@@ -24,7 +24,7 @@ For local development, install the repository path instead. Source edits remain 
 <details>
   <summary><strong>Resources & Inspiration for the help</strong></summary>
 
-Below are the resources I used to get to this point in my setup.
+Below are the resources I used to get to this point in my Pi setup.
 
 - [Richard Gill My Pi Setup][https://github.com/richardgill/pi-extensions/blob/main/PI_SETUP.md]
 - [https://github.com/IgorWarzocha/howaboua-pi-stuff][howaboua Pi Stuff]
