@@ -40,7 +40,9 @@
   "packageManager": "pnpm@10.27.0",
   "pi": {
     "extensions": [
-      "./extensions/*/src/index.ts"
+      "./extensions/pi-anti-slop/src/index.ts",
+      "./extensions/pi-better-ask-user/src/index.ts",
+      "./extensions/pi-better-btw/src/index.ts"
     ],
     "skills": [
       "./extensions/pi-anti-slop/skills",
