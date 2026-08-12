@@ -17,7 +17,7 @@ Part of [`pi-extensions`](../../README.md).
 ## Install with pi
 
 ```bash
-pi install npm:@edheltzel/pi-sub-pi
+pi install ./extensions/sub-pi
 ```
 
 or locally

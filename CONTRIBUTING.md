@@ -26,49 +26,22 @@ pnpm changeset
 
 Then choose the changed package, select the semver bump, and write a short release note.
 
-## Publishing an npm package for the first time manually
+## Developing Git-installed packages
 
-Use this only for the first manual publish of a new public package. After the package exists on npm, prefer the changesets release flow.
+The supported distribution path is the Atlas Git collection. The root manifest exposes the Atlas-owned resources listed in the root README:
 
-1. Confirm the workspace package is publishable:
-   - `package.json` has the correct `name`, `version`, `repository`, `files`, and `exports`.
-   - The package does not have `"private": true`.
-   - Scoped public packages use `--access public` when publishing.
-2. Confirm npm auth and package availability:
+```bash
+pi install git:github.com/edheltzel/pi-extensions
+pi update git:github.com/edheltzel/pi-extensions
+```
 
-   ```bash
-   npm whoami
-   npm view @edheltzel/<package-name> version
-   ```
+For workspaces that are not in the root collection, install the workspace directly from a checkout:
 
-   If `npm view` returns a 404, the package name is available to publish.
+```bash
+pi install ./extensions/<extension-name>
+```
 
-3. Dry-run the publish from the package directory:
-
-   ```bash
-   cd extensions/<package-name>
-   pnpm publish --access public --dry-run
-   ```
-
-4. Publish for real:
-
-   ```bash
-   pnpm publish --access public
-   ```
-
-5. Verify the package is visible:
-
-   ```bash
-   npm view @edheltzel/<package-name> version
-   ```
-
-6. Add npm trusted publishing for future automated releases:
-   - Open `https://www.npmjs.com/package/@edheltzel/<package-name>/access`, then go to **Publishing access**.
-   - Add a GitHub Actions trusted publisher.
-   - Repository: `edheltzel/pi-extensions`.
-   - Workflow file: `release.yml`.
-   - Environment: leave blank unless the GitHub Actions workflow starts using one.
-   - Do not add an npm token for this repo unless trusted publishing is unavailable.
+Run `/reload` after changing a loaded extension source file.
 
 ## Normal release flow
 

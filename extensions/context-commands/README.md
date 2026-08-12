@@ -5,7 +5,7 @@ Registers configurable Pi slash commands that run executables and load their out
 ## Install
 
 ```bash
-pi install npm:@edheltzel/pi-context-commands
+pi install ./extensions/context-commands
 ```
 
 Development:

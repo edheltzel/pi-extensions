@@ -19,7 +19,7 @@ Part of [`pi-extensions`](../../README.md).
 ## Install with pi
 
 ```bash
-pi install npm:@edheltzel/pi-project-resources
+pi install ./extensions/project-resources
 ```
 
 or locally

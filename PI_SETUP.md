@@ -10,6 +10,8 @@ Pi's [philosophy](https://mariozechner.at/posts/2025-11-30-pi-coding-agent/) is 
 
 Jump to [Install all extensions](#install-all-extensions).
 
+The commands below assume a checkout of this repository. The Atlas Git collection provides the resources listed in the root manifest; other workspaces are installed directly from their checkout paths.
+
 ## Install the Atlas Git collection
 
 The repository root exposes the Atlas-owned Anti-Slop, Better Ask User, and Better BTW resources as one Git package:
@@ -29,7 +31,7 @@ Update the unpinned Git package with `pi update git:github.com/edheltzel/pi-exte
 - See running processes and kill them with `/proc`.
 
 ```sh
-pi install npm:@edheltzel/pi-background-bash
+pi install ./extensions/background-bash
 ```
 
 [Source and documentation](./extensions/background-bash/README.md)
@@ -65,7 +67,7 @@ For example:
 Starting Pi in `~/code/my-app/packages/api` loads all three instruction files and both skills.
 
 ```sh
-pi install npm:@edheltzel/pi-project-resources
+pi install ./extensions/project-resources
 ```
 
 [Source and documentation](./extensions/project-resources/README.md)
@@ -81,7 +83,7 @@ But if you're looking for "sub agents" directly in Pi, check out my [`sub-pi`](.
 Pressing the up arrow shows prompts from previous Pi sessions, similar to Claude Code.
 
 ```sh
-pi install npm:@edheltzel/pi-up-history
+pi install ./extensions/pi-up-history
 ```
 
 [Source and documentation](./extensions/pi-up-history/README.md)
@@ -93,7 +95,7 @@ Registers slash commands that run commands and put their output into Pi's contex
 Example, `/diff` runs `git diff` and immediately populates the context window without an LLM turn.
 
 ```sh
-pi install npm:@edheltzel/pi-context-commands
+pi install ./extensions/context-commands
 ```
 
 ```jsonc
@@ -124,7 +126,7 @@ pi install npm:@edheltzel/pi-context-commands
 - Automatically trust every new folder - bypassing Pi's project trust prompt.
 
 ```sh
-pi install npm:@edheltzel/pi-bits
+pi install ./packages/pi-bits
 ```
 
 [Source and documentation](./packages/pi-bits/README.md)
@@ -166,11 +168,11 @@ pi install npm:pi-codex-status
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
 pi install npm:pi-atelier
-pi install npm:@edheltzel/pi-bits
-pi install npm:@edheltzel/pi-background-bash
-pi install npm:@edheltzel/pi-context-commands
-pi install npm:@edheltzel/pi-project-resources
-pi install npm:@edheltzel/pi-up-history
+pi install ./packages/pi-bits
+pi install ./extensions/background-bash
+pi install ./extensions/context-commands
+pi install ./extensions/project-resources
+pi install ./extensions/pi-up-history
 pi install npm:@calesennett/pi-codex-fast
 pi install npm:pi-codex-status
 ```

@@ -5,7 +5,7 @@ A Pi extension that replaces `bash` with session-owned local process groups and 
 ## Install
 
 ```bash
-pi install npm:@edheltzel/pi-background-bash
+pi install ./extensions/background-bash
 ```
 
 Try the repository checkout without installing:

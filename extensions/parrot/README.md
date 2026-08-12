@@ -12,7 +12,7 @@ Parrot finds the latest assistant message on the current branch, keeps only visi
 ## Installation
 
 ```bash
-pi install npm:@edheltzel/pi-parrot
+pi install ./extensions/parrot
 ```
 
 ## Configuration

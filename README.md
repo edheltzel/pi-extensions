@@ -24,16 +24,16 @@ For local development, install the repository path instead. Source edits remain 
 <details>
   <summary><strong>Resources & Inspiration for the help</strong></summary>
 
-Below are the resources I used to get to this point in my Pi setup.
+Below are the resources used to shape this Pi setup.
 
-- [Richard Gill My Pi Setup][https://github.com/richardgill/pi-extensions/blob/main/PI_SETUP.md]
-- [https://github.com/IgorWarzocha/howaboua-pi-stuff][howaboua Pi Stuff]
+- [Pi setup guide](./PI_SETUP.md)
+- [How About Pi Stuff](https://github.com/IgorWarzocha/howaboua-pi-stuff)
 
 </details>
 
 ## Extensions (actively used)
 
-### Published on npm
+### Repository workspaces
 - [`pi-background-bash`](./extensions/background-bash/README.md) - Overrides bash tool with one that can run in the background.
   - By default bash commands which take over 30s go to background and the LLM can continue taking turns.
 - [`pi-sub-pi`](./extensions/sub-pi/README.md) - Runs isolated Pi subprocesses for single, chained, or parallel tasks.
@@ -49,7 +49,7 @@ Below are the resources I used to get to this point in my Pi setup.
 
 ### Private extension workspaces
 
-These workspaces are not published individually. Footer and trust-all-projects are distributed through [`@richardgill/pi-bits`](./packages/pi-bits/README.md); thinking-toggle remains local-only.
+These workspaces are not distributed individually. Footer and trust-all-projects are bundled by [`pi-bits`](./packages/pi-bits/README.md); thinking-toggle remains local-only.
 
 - [`pi-footer`](./extensions/footer/README.md) - Replaces the footer with model, thinking, context, and extension status information.
 - [`pi-trust-all-projects`](./extensions/trust-all-projects/README.md) - Automatically trusts every project.
@@ -69,14 +69,14 @@ These workspaces are not published individually. Footer and trust-all-projects a
 
 ## Other extensions (not currently used)
 
-### Published on npm
+### Repository workspaces
 
 - [`pi-file-collector`](./extensions/file-collector/README.md) - Records files and line ranges that Pi reads, edits, writes, or cites in a JSONL file.
 - [`pi-tmux-bash`](./extensions/tmux-bash/README.md) - Replaces Pi's bash tool with a tmux-backed version for background jobs and polling.
 
 ### Unpublished
 
-These packages are intentionally local, have `private: true`, and must not be published to npm.
+These packages are intentionally local and have `private: true`.
 
 - [`pi-bash-timeout-guard`](./extensions/bash-timeout-guard/README.md)
 - [`pi-handoff`](./extensions/handoff/README.md) - Generates an editable context-transfer prompt and opens it in a new session.
