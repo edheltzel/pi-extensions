@@ -21,6 +21,16 @@ pi update git:github.com/edheltzel/pi-extensions
 
 For local development, install the repository path instead. Source edits remain live and can be applied with `/reload`.
 
+<details>
+  <summary><strong>Resources & Inspiration for the help</strong></summary>
+
+Below are the resources I used to get to this point in my setup.
+
+- [Richard Gill My Pi Setup][https://github.com/richardgill/pi-extensions/blob/main/PI_SETUP.md]
+- [https://github.com/IgorWarzocha/howaboua-pi-stuff][howaboua Pi Stuff]
+
+</details>
+
 ## Extensions (actively used)
 
 ### Published on npm
@@ -71,3 +81,7 @@ These packages are intentionally local, have `private: true`, and must not be pu
 - [`pi-bash-timeout-guard`](./extensions/bash-timeout-guard/README.md)
 - [`pi-handoff`](./extensions/handoff/README.md) - Generates an editable context-transfer prompt and opens it in a new session.
 - [`pi-task-context`](./extensions/task-context)
+
+---
+
+
