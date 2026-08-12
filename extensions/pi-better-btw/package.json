@@ -1,0 +1,56 @@
+{
+  "name": "@edheltzel/pi-better-btw",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A better /btw for Pi",
+  "keywords": [
+    "btw",
+    "extension",
+    "pi",
+    "pi-coding-agent",
+    "pi-package"
+  ],
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/pi-better-btw#readme",
+  "bugs": {
+    "url": "https://github.com/edheltzel/pi-extensions/issues"
+  },
+  "license": "MIT",
+  "author": "Ed Heltzel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edheltzel/pi-extensions.git",
+    "directory": "extensions/pi-better-btw"
+  },
+  "files": [
+    "src",
+    "assets/betterbtw-overlay.png",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run --root ../.. extensions/pi-better-btw/tests",
+    "test:watch": "vitest --root ../.. extensions/pi-better-btw/tests",
+    "tsc": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.81.1",
+    "@earendil-works/pi-tui": ">=0.81.1"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "@edheltzel/pi-anti-slop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Native Pi extension and skills for finding and repairing substance defects without authorship claims",
+  "keywords": [
+    "anti-slop",
+    "code-review",
+    "extension",
+    "pi",
+    "pi-coding-agent",
+    "pi-package",
+    "skills",
+    "writing"
+  ],
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/pi-anti-slop#readme",
+  "bugs": {
+    "url": "https://github.com/edheltzel/pi-extensions/issues"
+  },
+  "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0",
+  "author": "Daniel Agrici",
+  "contributors": [
+    "Ed Heltzel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edheltzel/pi-extensions.git",
+    "directory": "extensions/pi-anti-slop"
+  },
+  "files": [
+    "src",
+    "skills/*/SKILL.md",
+    "skills/anti-slop/references/**/*.md",
+    "skills/anti-slop/scripts/*.py",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE",
+    "LICENSE-CONTENT",
+    "NOTICE"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run --root ../.. extensions/pi-anti-slop/tests",
+    "test:watch": "vitest --root ../.. extensions/pi-anti-slop/tests",
+    "tsc": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  }
+}

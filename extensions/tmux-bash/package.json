@@ -1,0 +1,49 @@
+{
+  "name": "@richardgill/pi-tmux-bash",
+  "version": "0.0.12",
+  "keywords": [
+    "pi-package"
+  ],
+  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/tmux-bash",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardgill/pi-extensions",
+    "directory": "extensions/tmux-bash"
+  },
+  "files": [
+    "src"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/extension.ts",
+    "./core": "./src/core.ts"
+  },
+  "scripts": {
+    "tsc": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@richardgill/lib": "workspace:*",
+    "@richardgill/pi-config": "workspace:*",
+    "@richardgill/pi-zod-tool-call": "workspace:*",
+    "zod": "4.3.6"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "@sinclair/typebox": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    }
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ],
+    "video": "https://raw.githubusercontent.com/richardgill/pi-extensions/main/extensions/tmux-bash/demo/demo.mp4"
+  }
+}

@@ -1,0 +1,79 @@
+anti-slop
+Copyright 2026 Daniel Agrici
+
+This product includes software developed by Daniel Agrici, licensed under the
+Apache License, Version 2.0. See LICENSE.
+
+Non-code content is licensed separately. See LICENSE-CONTENT.
+
+PI PORT
+-------
+
+Native Pi package adaptation by Ed Heltzel, 2026-07-29.
+
+Changes include a TypeScript preflight gate for Pi write and edit calls,
+Pi-native package and skill metadata, self-contained Layer 0 skill resources,
+native local installation documentation, and conversion of Claude agent definitions into
+optional, non-discoverable worker-role references. The Pi port does not claim
+tool isolation, fixed models, bounded turns, or fresh contexts for those role
+references.
+
+The original Claude plugin manifests and hooks are not copied. `index.ts`
+adapts the Apache-licensed house-style hook behavior to Pi's extension API.
+
+ATTRIBUTION FOR ADAPTED MATERIAL
+================================
+
+Wikipedia: Signs of AI writing, and WikiProject AI Cleanup
+----------------------------------------------------------
+Source:   https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+Authors:  Wikipedia contributors
+Licence:  CC BY-SA 4.0
+Retrieved: 2026-07-27
+
+Adapted for: the marker taxonomy, the words-to-watch lists, the
+ineffective-indicators list, the vendor-residue token table, and the citation
+defect categories. Adaptations remain under CC BY-SA 4.0.
+
+The central doctrine of this project is quoted from that guide:
+
+  "The patterns listed here are also only potential signs of a problem, not
+  the problem itself. Please do not merely treat these signs as the problems
+  to be fixed; that could just make detection harder."
+
+THIRD-PARTY WORK REFERENCED BUT NOT COPIED
+==========================================
+
+blader/humanizer
+----------------
+Source:  https://github.com/blader/humanizer
+Licence: MIT
+Version: 2.9.1 at 2026-07-22
+
+Analysed as prior art. No code or prose was copied.
+
+impeccable plugin, by Paul Bakaus
+---------------------------------
+Licence: Apache 2.0
+
+The two-tier detection methodology, first-order lexical and second-order
+structural, reached the original project by way of a sibling project rather
+than directly.
+
+Claude Blog Brain, wiki substance scorer
+----------------------------------------
+`scripts/score_substance.py` is a port and generalisation of the
+check_wiki_substance and score_wiki_substance functions from a sibling project
+by the same author. Thresholds were retained unchanged.
+
+claude-blog prose linter
+------------------------
+`scripts/lint_voice.py` cleanly reimplements the fence-aware and
+backtick-aware dash-detection design from claude-blog 2.1.0. It neither imports
+nor executes claude-blog code at runtime.
+
+DEPENDENCIES
+============
+
+The scanners use the Python standard library only. The Pi extension declares
+Pi itself as a peer dependency and has no third-party runtime dependency.

@@ -1,0 +1,33 @@
+Licences for the pi-anti-slop package
+=====================================
+
+This package contains code and content under separate terms.
+
+  index.ts, scripts/**                    Apache 2.0
+  skills/**, README.md, SECURITY.md       CC BY 4.0
+  references/structural-tests.md          CC BY 4.0
+
+  references/markers-tier1.md             CC BY-SA 4.0
+  references/markers-tier2.md             CC BY-SA 4.0
+  references/markers-tier3.md             CC BY-SA 4.0
+  references/false-positives.md           CC BY-SA 4.0
+  references/code-markers.md              CC BY-SA 4.0
+
+The five files above adapt the English Wikipedia page
+"Wikipedia:Signs of AI writing" and WikiProject AI Cleanup, retrieved
+2026-07-27, specifically the marker taxonomy, words-to-watch lists,
+ineffective-indicators list, vendor-residue token table, and citation-defect
+categories.
+
+CC BY-SA 4.0 is a copyleft licence. Adaptations of that material must remain
+under CC BY-SA 4.0 and carry attribution. It cannot be relicensed under Apache
+2.0, MIT, or another non-compatible licence.
+
+  https://creativecommons.org/licenses/by-sa/4.0/
+  https://creativecommons.org/licenses/by/4.0/
+  https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing
+
+The original anti-slop project is at:
+https://github.com/AgriciDaniel/anti-slop
+
+Attribution detail and Pi-port modification notices are in NOTICE.

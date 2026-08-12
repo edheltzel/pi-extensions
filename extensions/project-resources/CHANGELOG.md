@@ -1,0 +1,80 @@
+# @richardgill/pi-project-resources
+
+## 0.1.1
+
+### Patch Changes
+
+- [#56](https://github.com/richardgill/pi-extensions/pull/56) [`36b2ff6`](https://github.com/richardgill/pi-extensions/commit/36b2ff6efabd8879cdec5bf3ae4959012ba6e11e) Thanks [@richardgill](https://github.com/richardgill)! - Exclude home-level skill directories while retaining inherited discovery below `HOME`.
+
+## 0.1.0
+
+### Minor Changes
+
+- [#54](https://github.com/richardgill/pi-extensions/pull/54) [`cd2affb`](https://github.com/richardgill/pi-extensions/commit/cd2affb8aa1e4e9ed1b51af29ed84bd82fc90eec) Thanks [@richardgill](https://github.com/richardgill)! - Discover trusted ancestor `.pi/skills` and `.claude/skills` directories.
+
+## 0.0.8
+
+### Patch Changes
+
+- [#34](https://github.com/richardgill/pi-extensions/pull/34) [`011758f`](https://github.com/richardgill/pi-extensions/commit/011758f71b700eef6930a7a20d1323f6097e9f7d) Thanks [@richardgill](https://github.com/richardgill)! - Refresh published packages listed in the README.
+
+- [#34](https://github.com/richardgill/pi-extensions/pull/34) [`7fb828a`](https://github.com/richardgill/pi-extensions/commit/7fb828a60be7cb2303239d808f055150016b261d) Thanks [@richardgill](https://github.com/richardgill)! - Mark Pi host packages as optional peers to avoid npm auto-installing deprecated Pi package scopes.
+
+- Updated dependencies [[`011758f`](https://github.com/richardgill/pi-extensions/commit/011758f71b700eef6930a7a20d1323f6097e9f7d), [`7fb828a`](https://github.com/richardgill/pi-extensions/commit/7fb828a60be7cb2303239d808f055150016b261d)]:
+  - @richardgill/pi-config@0.0.8
+
+## 0.0.7
+
+### Patch Changes
+
+- [#32](https://github.com/richardgill/pi-extensions/pull/32) [`4ed7bfa`](https://github.com/richardgill/pi-extensions/commit/4ed7bfa46cfec91a0aa6176dd98cd29b77c6f826) Thanks [@richardgill](https://github.com/richardgill)! - Release patch versions for all extensions and packages.
+
+- Updated dependencies [[`4ed7bfa`](https://github.com/richardgill/pi-extensions/commit/4ed7bfa46cfec91a0aa6176dd98cd29b77c6f826)]:
+  - @richardgill/pi-config@0.0.7
+
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`0e50928`](https://github.com/richardgill/pi-extensions/commit/0e50928c33d05bb5f326a0fa35fce3b4692bd677)]:
+  - @richardgill/pi-config@0.0.6
+
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`43f9a8c`](https://github.com/richardgill/pi-extensions/commit/43f9a8c69fd729f02b35ebf2a86474bf618cc8ce)]:
+  - @richardgill/pi-config@0.0.5
+
+## 0.0.4
+
+### Patch Changes
+
+- [`d405126`](https://github.com/richardgill/pi-extensions/commit/d405126008e6ef9a0c7d5dd061637f381fbe6efa) Thanks [@richardgill](https://github.com/richardgill)! - Publish package homepage metadata.
+
+- Updated dependencies [[`d405126`](https://github.com/richardgill/pi-extensions/commit/d405126008e6ef9a0c7d5dd061637f381fbe6efa)]:
+  - @richardgill/pi-config@0.0.4
+
+## 0.0.3
+
+### Patch Changes
+
+- [`3d3206a`](https://github.com/richardgill/pi-extensions/commit/3d3206a0d9896d1756acda4c8bfad759fd4d430a) Thanks [@richardgill](https://github.com/richardgill)! - Patch release for pi extension package updates.
+
+- Updated dependencies [[`3d3206a`](https://github.com/richardgill/pi-extensions/commit/3d3206a0d9896d1756acda4c8bfad759fd4d430a)]:
+  - @richardgill/pi-config@0.0.3
+
+## 0.0.2
+
+### Patch Changes
+
+- [`60a17ed`](https://github.com/richardgill/pi-extensions/commit/60a17ede3a3ea645753040c320a8596ccf7460bb) Thanks [@richardgill](https://github.com/richardgill)! - Patch release for all workspace packages.
+
+- Updated dependencies [[`60a17ed`](https://github.com/richardgill/pi-extensions/commit/60a17ede3a3ea645753040c320a8596ccf7460bb)]:
+  - @richardgill/pi-config@0.0.2
+
+## 0.0.1
+
+### Patch Changes
+
+- Added extra context file loading for `AGENTS.local.md` and `CLAUDE.local.md`.

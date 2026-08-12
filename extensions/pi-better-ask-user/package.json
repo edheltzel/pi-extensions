@@ -1,0 +1,70 @@
+{
+  "name": "@edheltzel/pi-better-ask-user",
+  "version": "0.13.0-herdr.1",
+  "private": true,
+  "description": "Interactive better_ask_user tool for pi-coding-agent with searchable split-pane selection UI, multi-select, and freeform input",
+  "keywords": [
+    "ask",
+    "better-ask-user",
+    "better_ask_user",
+    "extension",
+    "herdr",
+    "interactive",
+    "pi",
+    "pi-coding-agent",
+    "pi-package"
+  ],
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/pi-better-ask-user#readme",
+  "bugs": {
+    "url": "https://github.com/edheltzel/pi-extensions/issues"
+  },
+  "license": "MIT",
+  "author": "Enzo Lucchesi <enzo@edl.sh>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edheltzel/pi-extensions.git",
+    "directory": "extensions/pi-better-ask-user"
+  },
+  "files": [
+    "src",
+    "skills",
+    "assets",
+    "examples",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run --root ../.. extensions/pi-better-ask-user/tests",
+    "test:watch": "vitest --root ../.. extensions/pi-better-ask-user/tests",
+    "tsc": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.74.0",
+    "@earendil-works/pi-tui": ">=0.74.0",
+    "@sinclair/typebox": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    },
+    "@sinclair/typebox": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  }
+}

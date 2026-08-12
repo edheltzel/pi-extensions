@@ -1,0 +1,40 @@
+[
+  {
+    "question": "Which release strategy should the preview use?",
+    "context": "This question demonstrates searchable single-select options with descriptions.",
+    "options": [
+      {
+        "title": "Incremental rollout",
+        "description": "Release to a small group first, then expand after validation."
+      },
+      {
+        "title": "Immediate rollout",
+        "description": "Release to everyone at once after the current checks pass."
+      }
+    ],
+    "allowFreeform": true
+  },
+  {
+    "question": "Which checks should run before release?",
+    "context": "This question demonstrates inline multi-select and optional comments.",
+    "options": [
+      {
+        "title": "Unit tests"
+      },
+      {
+        "title": "Package dry run"
+      },
+      {
+        "title": "Manual TUI preview"
+      }
+    ],
+    "allowMultiple": true,
+    "allowFreeform": false,
+    "allowComment": true,
+    "displayMode": "inline"
+  },
+  {
+    "question": "What additional Better Ask User scenario should we preview next?",
+    "context": "This final question demonstrates a freeform-only prompt."
+  }
+]
