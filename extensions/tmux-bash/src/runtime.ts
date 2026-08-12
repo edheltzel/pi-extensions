@@ -4,7 +4,7 @@ import {
   type ExtensionAPI,
   type ExtensionContext,
 } from "@earendil-works/pi-coding-agent";
-import { sleep } from "@richardgill/lib";
+import { sleep } from "@edheltzel/lib";
 import { randomBytes } from "node:crypto";
 import {
   chmodSync,

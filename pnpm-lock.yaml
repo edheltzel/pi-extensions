@@ -59,7 +59,7 @@ importers:
       '@earendil-works/pi-tui':
         specifier: '*'
         version: 0.83.0
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       typebox:
@@ -74,7 +74,7 @@ importers:
       '@earendil-works/pi-coding-agent':
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -89,7 +89,7 @@ importers:
       '@earendil-works/pi-tui':
         specifier: '*'
         version: 0.83.0
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -101,7 +101,7 @@ importers:
       '@earendil-works/pi-coding-agent':
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -146,7 +146,7 @@ importers:
       '@earendil-works/pi-tui':
         specifier: '*'
         version: 0.83.0
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -180,6 +180,15 @@ importers:
         specifier: '>=0.81.1'
         version: 0.83.0
 
+  extensions/pi-minimal-mode:
+    dependencies:
+      '@earendil-works/pi-coding-agent':
+        specifier: '*'
+        version: 0.83.0(ws@8.20.0)(zod@4.3.6)
+      '@earendil-works/pi-tui':
+        specifier: '*'
+        version: 0.83.0
+
   extensions/pi-up-history:
     dependencies:
       '@earendil-works/pi-coding-agent':
@@ -197,7 +206,7 @@ importers:
       '@earendil-works/pi-tui':
         specifier: '*'
         version: 0.83.0
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -218,7 +227,7 @@ importers:
       '@earendil-works/pi-coding-agent':
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -230,7 +239,7 @@ importers:
       '@earendil-works/pi-coding-agent':
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -251,7 +260,7 @@ importers:
       '@earendil-works/pi-tui':
         specifier: '*'
         version: 0.83.0
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       '@sinclair/typebox':
@@ -266,7 +275,7 @@ importers:
       '@earendil-works/pi-coding-agent':
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
       zod:
@@ -281,10 +290,10 @@ importers:
       '@earendil-works/pi-coding-agent':
         specifier: '*'
         version: 0.83.0(ws@8.20.0)(zod@4.3.6)
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
-      '@richardgill/pi-file-collector':
+      '@edheltzel/pi-file-collector':
         specifier: workspace:*
         version: link:../file-collector
       zod:
@@ -308,13 +317,13 @@ importers:
       '@earendil-works/pi-tui':
         specifier: '*'
         version: 0.83.0
-      '@richardgill/lib':
+      '@edheltzel/lib':
         specifier: workspace:*
         version: link:../../packages/lib
-      '@richardgill/pi-config':
+      '@edheltzel/pi-config':
         specifier: workspace:*
         version: link:../../packages/pi-config
-      '@richardgill/pi-zod-tool-call':
+      '@edheltzel/pi-zod-tool-call':
         specifier: workspace:*
         version: link:../../packages/pi-zod-tool-call
       '@sinclair/typebox':

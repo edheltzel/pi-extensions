@@ -14,7 +14,7 @@ import type {
 import {
   collectFileEventsForTurnFromSessionFile,
   type FileLineEvent,
-} from "@richardgill/pi-file-collector";
+} from "@edheltzel/pi-file-collector";
 import { z } from "zod";
 
 const execFileAsync = promisify(execFile);

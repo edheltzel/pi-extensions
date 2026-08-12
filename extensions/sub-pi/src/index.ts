@@ -1,10 +1,5 @@
-import { loadConfigOrDefault } from "@richardgill/pi-config";
-import {
-  DEFAULT_OPTIONS,
-  type PromptPatch,
-  type SubPiOptions,
-  subPi,
-} from "@richardgill/pi-sub-pi";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
+import { DEFAULT_OPTIONS, type PromptPatch, type SubPiOptions, subPi } from "@edheltzel/pi-sub-pi";
 import { z } from "zod";
 
 type PromptPatchConfig = { match: string; flags?: string; replace: string };

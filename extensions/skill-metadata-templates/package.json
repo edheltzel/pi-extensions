@@ -1,14 +1,14 @@
 {
-  "name": "@richardgill/pi-skill-metadata-templates",
+  "name": "@edheltzel/pi-skill-metadata-templates",
   "version": "0.0.1",
   "private": true,
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/skill-metadata-templates",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/skill-metadata-templates",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/skill-metadata-templates"
   },
   "files": [
@@ -24,7 +24,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

@@ -1,8 +1,8 @@
 # My Pi setup
 
 - I use Pi with OpenAI Codex `gpt-5.6-sol` at the High thinking level (OpenAI has a generous policy allowing you to use your own harness)
-- My [`AGENTS.md`](https://github.com/richardgill/nix/blob/main/built/ai-agents/pi/AGENTS.md?plain=1) ([template](https://github.com/richardgill/nix/blob/main/flake/modules/home-manager/dot-files/ai-agents/shared/partials/AGENTS.md.hbs?plain=1))
-- My Pi [`settings.json`](https://github.com/richardgill/nix/blob/main/out-of-store-config/ai-agents/pi/settings.json)
+- My [`AGENTS.md`](https://github.com/edheltzel/nix/blob/main/built/ai-agents/pi/AGENTS.md?plain=1) ([template](https://github.com/edheltzel/nix/blob/main/flake/modules/home-manager/dot-files/ai-agents/shared/partials/AGENTS.md.hbs?plain=1))
+- My Pi [`settings.json`](https://github.com/edheltzel/nix/blob/main/out-of-store-config/ai-agents/pi/settings.json)
 
 I only use `AGENTS.md` + skills.
 
@@ -29,7 +29,7 @@ Update the unpinned Git package with `pi update git:github.com/edheltzel/pi-exte
 - See running processes and kill them with `/proc`.
 
 ```sh
-pi install npm:@richardgill/pi-background-bash
+pi install npm:@edheltzel/pi-background-bash
 ```
 
 [Source and documentation](./extensions/background-bash/README.md)
@@ -65,14 +65,14 @@ For example:
 Starting Pi in `~/code/my-app/packages/api` loads all three instruction files and both skills.
 
 ```sh
-pi install npm:@richardgill/pi-project-resources
+pi install npm:@edheltzel/pi-project-resources
 ```
 
 [Source and documentation](./extensions/project-resources/README.md)
 
 ## Subagents / tasks
 
-Pi is aware of my tmux setup and can spawn new Pi windows and worktrees using the [tmux-pi](https://github.com/richardgill/nix/blob/main/built/ai-agents/pi/skills/tmux-pi/SKILL.md?plain=1) skill.
+Pi is aware of my tmux setup and can spawn new Pi windows and worktrees using the [tmux-pi](https://github.com/edheltzel/nix/blob/main/built/ai-agents/pi/skills/tmux-pi/SKILL.md?plain=1) skill.
 
 But if you're looking for "sub agents" directly in Pi, check out my [`sub-pi`](./extensions/sub-pi/README.md) and [`sub-pi-skill`](./extensions/sub-pi-skill/README.md) extensions which I used for a long time (be warned: it's not as polished as Claude Code or Codex).
 
@@ -81,7 +81,7 @@ But if you're looking for "sub agents" directly in Pi, check out my [`sub-pi`](.
 Pressing the up arrow shows prompts from previous Pi sessions, similar to Claude Code.
 
 ```sh
-pi install npm:@richardgill/pi-up-history
+pi install npm:@edheltzel/pi-up-history
 ```
 
 [Source and documentation](./extensions/pi-up-history/README.md)
@@ -93,7 +93,7 @@ Registers slash commands that run commands and put their output into Pi's contex
 Example, `/diff` runs `git diff` and immediately populates the context window without an LLM turn.
 
 ```sh
-pi install npm:@richardgill/pi-context-commands
+pi install npm:@edheltzel/pi-context-commands
 ```
 
 ```jsonc
@@ -124,7 +124,7 @@ pi install npm:@richardgill/pi-context-commands
 - Automatically trust every new folder - bypassing Pi's project trust prompt.
 
 ```sh
-pi install npm:@richardgill/pi-bits
+pi install npm:@edheltzel/pi-bits
 ```
 
 [Source and documentation](./packages/pi-bits/README.md)
@@ -166,11 +166,11 @@ pi install npm:pi-codex-status
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
 pi install npm:pi-atelier
-pi install npm:@richardgill/pi-bits
-pi install npm:@richardgill/pi-background-bash
-pi install npm:@richardgill/pi-context-commands
-pi install npm:@richardgill/pi-project-resources
-pi install npm:@richardgill/pi-up-history
+pi install npm:@edheltzel/pi-bits
+pi install npm:@edheltzel/pi-background-bash
+pi install npm:@edheltzel/pi-context-commands
+pi install npm:@edheltzel/pi-project-resources
+pi install npm:@edheltzel/pi-up-history
 pi install npm:@calesennett/pi-codex-fast
 pi install npm:pi-codex-status
 ```

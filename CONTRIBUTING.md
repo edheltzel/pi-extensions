@@ -38,7 +38,7 @@ Use this only for the first manual publish of a new public package. After the pa
 
    ```bash
    npm whoami
-   npm view @richardgill/<package-name> version
+   npm view @edheltzel/<package-name> version
    ```
 
    If `npm view` returns a 404, the package name is available to publish.
@@ -59,13 +59,13 @@ Use this only for the first manual publish of a new public package. After the pa
 5. Verify the package is visible:
 
    ```bash
-   npm view @richardgill/<package-name> version
+   npm view @edheltzel/<package-name> version
    ```
 
 6. Add npm trusted publishing for future automated releases:
-   - Open `https://www.npmjs.com/package/@richardgill/<package-name>/access`, then go to **Publishing access**.
+   - Open `https://www.npmjs.com/package/@edheltzel/<package-name>/access`, then go to **Publishing access**.
    - Add a GitHub Actions trusted publisher.
-   - Repository: `richardgill/pi-extensions`.
+   - Repository: `edheltzel/pi-extensions`.
    - Workflow file: `release.yml`.
    - Environment: leave blank unless the GitHub Actions workflow starts using one.
    - Do not add an npm token for this repo unless trusted publishing is unavailable.

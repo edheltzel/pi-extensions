@@ -7,7 +7,7 @@ import type {
   ExtensionContext,
   TurnEndEvent,
 } from "@earendil-works/pi-coding-agent";
-import { createSessionSidecarPath } from "@richardgill/pi-file-collector";
+import { createSessionSidecarPath } from "@edheltzel/pi-file-collector";
 import { describe, expect, it, vi } from "vitest";
 
 const completeSimpleMock = vi.hoisted(() => vi.fn());

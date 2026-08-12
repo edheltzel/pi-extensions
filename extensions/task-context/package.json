@@ -1,14 +1,14 @@
 {
-  "name": "@richardgill/pi-task-context",
+  "name": "@edheltzel/pi-task-context",
   "version": "0.0.4",
   "private": true,
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/task-context",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/task-context",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/task-context"
   },
   "files": [
@@ -24,8 +24,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
-    "@richardgill/pi-file-collector": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
+    "@edheltzel/pi-file-collector": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

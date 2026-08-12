@@ -1,4 +1,4 @@
-import { loadConfigOrDefault } from "@richardgill/pi-config";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
 
 import { contextCommands, ContextCommandsConfigSchema } from "./extension";
 

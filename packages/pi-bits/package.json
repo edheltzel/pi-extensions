@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-bits",
+  "name": "@edheltzel/pi-bits",
   "version": "0.0.2",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/packages/pi-bits",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/packages/pi-bits",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "packages/pi-bits"
   },
   "files": [

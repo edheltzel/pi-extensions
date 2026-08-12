@@ -12,25 +12,25 @@
     "types": ["node"],
     "noEmit": true,
     "paths": {
-      "@richardgill/pi-background-bash": ["./extensions/background-bash/src/extension.ts"],
-      "@richardgill/pi-background-bash/core": ["./extensions/background-bash/src/core.ts"],
-      "@richardgill/pi-context-commands": ["./extensions/context-commands/src/extension.ts"],
-      "@richardgill/pi-tmux-bash": ["./extensions/tmux-bash/src/extension.ts"],
-      "@richardgill/pi-tmux-bash/core": ["./extensions/tmux-bash/src/core.ts"],
-      "@richardgill/pi-file-collector": ["./extensions/file-collector/src/extension.ts"],
-      "@richardgill/pi-project-resources": ["./extensions/project-resources/src/index.ts"],
-      "@richardgill/pi-parrot": ["./extensions/parrot/src/extension.ts"],
-      "@richardgill/pi-preset": ["./extensions/preset/src/extension.ts"],
-      "@richardgill/pi-sub-pi": ["./extensions/sub-pi/src/extension.ts"],
-      "@richardgill/pi-sub-pi-skill": ["./extensions/sub-pi-skill/src/extension.ts"],
-      "@richardgill/pi-skill-metadata-templates": [
+      "@edheltzel/pi-background-bash": ["./extensions/background-bash/src/extension.ts"],
+      "@edheltzel/pi-background-bash/core": ["./extensions/background-bash/src/core.ts"],
+      "@edheltzel/pi-context-commands": ["./extensions/context-commands/src/extension.ts"],
+      "@edheltzel/pi-tmux-bash": ["./extensions/tmux-bash/src/extension.ts"],
+      "@edheltzel/pi-tmux-bash/core": ["./extensions/tmux-bash/src/core.ts"],
+      "@edheltzel/pi-file-collector": ["./extensions/file-collector/src/extension.ts"],
+      "@edheltzel/pi-project-resources": ["./extensions/project-resources/src/index.ts"],
+      "@edheltzel/pi-parrot": ["./extensions/parrot/src/extension.ts"],
+      "@edheltzel/pi-preset": ["./extensions/preset/src/extension.ts"],
+      "@edheltzel/pi-sub-pi": ["./extensions/sub-pi/src/extension.ts"],
+      "@edheltzel/pi-sub-pi-skill": ["./extensions/sub-pi-skill/src/extension.ts"],
+      "@edheltzel/pi-skill-metadata-templates": [
         "./extensions/skill-metadata-templates/src/extension.ts"
       ],
       "pi-bash-timeout-guard": ["./extensions/bash-timeout-guard/src/extension.ts"],
-      "@richardgill/pi-up-history": ["./extensions/pi-up-history/src/extension.ts"],
-      "@richardgill/pi-config": ["./packages/pi-config/src/index.ts"],
-      "@richardgill/pi-zod-tool-call": ["./packages/pi-zod-tool-call/src/index.ts"],
-      "@richardgill/lib": ["./packages/lib/src/index.ts"]
+      "@edheltzel/pi-up-history": ["./extensions/pi-up-history/src/extension.ts"],
+      "@edheltzel/pi-config": ["./packages/pi-config/src/index.ts"],
+      "@edheltzel/pi-zod-tool-call": ["./packages/pi-zod-tool-call/src/index.ts"],
+      "@edheltzel/lib": ["./packages/lib/src/index.ts"]
     }
   },
   "include": [

@@ -1,4 +1,4 @@
-# @richardgill/pi-parrot
+# @edheltzel/pi-parrot
 
 Populate Pi's input box with the last assistant message.
 
@@ -12,7 +12,7 @@ Parrot finds the latest assistant message on the current branch, keeps only visi
 ## Installation
 
 ```bash
-pi install npm:@richardgill/pi-parrot
+pi install npm:@edheltzel/pi-parrot
 ```
 
 ## Configuration

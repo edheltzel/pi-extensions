@@ -1,10 +1,10 @@
 {
-  "name": "@richardgill/pi-zod-tool-call",
+  "name": "@edheltzel/pi-zod-tool-call",
   "version": "0.0.3",
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/packages/pi-zod-tool-call",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/packages/pi-zod-tool-call",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "packages/pi-zod-tool-call"
   },
   "files": [

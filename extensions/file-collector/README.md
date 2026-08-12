@@ -7,7 +7,7 @@ Part of [`pi-extensions`](../../README.md).
 ## Install with pi
 
 ```bash
-pi install npm:@richardgill/pi-file-collector
+pi install npm:@edheltzel/pi-file-collector
 ```
 
 ## Configure

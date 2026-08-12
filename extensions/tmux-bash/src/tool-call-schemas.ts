@@ -1,4 +1,4 @@
-import { defineZodToolCall } from "@richardgill/pi-zod-tool-call";
+import { defineZodToolCall } from "@edheltzel/pi-zod-tool-call";
 import { z } from "zod";
 import type { TmuxAction } from "./config";
 

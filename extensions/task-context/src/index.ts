@@ -1,5 +1,5 @@
-import { loadConfigOrDefault, templatedString } from "@richardgill/pi-config";
-import { DEFAULT_OPTIONS, taskContext } from "@richardgill/pi-task-context";
+import { loadConfigOrDefault, templatedString } from "@edheltzel/pi-config";
+import { DEFAULT_OPTIONS, taskContext } from "@edheltzel/pi-task-context";
 import { z } from "zod";
 
 const ThinkingLevelSchema = z.enum(["minimal", "low", "medium", "high", "xhigh", "max"]);

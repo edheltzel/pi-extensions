@@ -1,5 +1,5 @@
 import { getAgentDir } from "@earendil-works/pi-coding-agent";
-import { loadConfigOrDefault } from "@richardgill/pi-config";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
 
 import { skillMetadataTemplates, SkillMetadataTemplatesConfigSchema } from "./extension";
 

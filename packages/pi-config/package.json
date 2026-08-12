@@ -1,10 +1,10 @@
 {
-  "name": "@richardgill/pi-config",
+  "name": "@edheltzel/pi-config",
   "version": "0.0.8",
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/packages/pi-config",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/packages/pi-config",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "packages/pi-config"
   },
   "files": [

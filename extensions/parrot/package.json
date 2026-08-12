@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-parrot",
+  "name": "@edheltzel/pi-parrot",
   "version": "0.0.2",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/parrot",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/parrot",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/parrot"
   },
   "files": [
@@ -23,7 +23,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

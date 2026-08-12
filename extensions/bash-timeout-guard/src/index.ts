@@ -1,4 +1,4 @@
-import { loadConfigOrDefault, templatedString } from "@richardgill/pi-config";
+import { loadConfigOrDefault, templatedString } from "@edheltzel/pi-config";
 import { z } from "zod";
 import { bashTimeoutGuard, DEFAULT_OPTIONS } from "pi-bash-timeout-guard";
 

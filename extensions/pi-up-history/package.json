@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-up-history",
+  "name": "@edheltzel/pi-up-history",
   "version": "0.0.2",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/pi-up-history",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/pi-up-history",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/pi-up-history"
   },
   "files": [

@@ -18,7 +18,7 @@ Type 'clear'
 Enter
 Show
 
-Type@20ms 'pi -e "npm:@richardgill/pi-tmux-bash"'
+Type@20ms 'pi -e "npm:@edheltzel/pi-tmux-bash"'
 Enter
 Sleep 2s
 

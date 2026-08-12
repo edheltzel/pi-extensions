@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-context-commands",
+  "name": "@edheltzel/pi-context-commands",
   "version": "0.0.3",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/context-commands",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/context-commands",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/context-commands"
   },
   "files": [
@@ -23,7 +23,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

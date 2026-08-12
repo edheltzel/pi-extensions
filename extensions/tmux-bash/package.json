@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-tmux-bash",
+  "name": "@edheltzel/pi-tmux-bash",
   "version": "0.0.12",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/tmux-bash",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/tmux-bash",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/tmux-bash"
   },
   "files": [
@@ -22,9 +22,9 @@
     "tsc": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@richardgill/lib": "workspace:*",
-    "@richardgill/pi-config": "workspace:*",
-    "@richardgill/pi-zod-tool-call": "workspace:*",
+    "@edheltzel/lib": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
+    "@edheltzel/pi-zod-tool-call": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {
@@ -44,6 +44,6 @@
     "extensions": [
       "./src/index.ts"
     ],
-    "video": "https://raw.githubusercontent.com/richardgill/pi-extensions/main/extensions/tmux-bash/demo/demo.mp4"
+    "video": "https://raw.githubusercontent.com/edheltzel/pi-extensions/main/extensions/tmux-bash/demo/demo.mp4"
   }
 }

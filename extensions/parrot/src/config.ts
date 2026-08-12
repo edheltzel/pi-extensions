@@ -1,5 +1,5 @@
 import type { KeyId } from "@earendil-works/pi-tui";
-import { loadConfigOrDefault } from "@richardgill/pi-config";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
 import { z } from "zod";
 
 export type ParrotOptions = {

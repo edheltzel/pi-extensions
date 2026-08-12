@@ -5,7 +5,7 @@ JSONC config loading helpers for Pi extensions.
 ## Usage
 
 ```ts
-import { loadConfigOrDefault, templatedString } from "@richardgill/pi-config";
+import { loadConfigOrDefault, templatedString } from "@edheltzel/pi-config";
 import { z } from "zod";
 
 const schema = z.object({

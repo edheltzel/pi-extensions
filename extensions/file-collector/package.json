@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-file-collector",
+  "name": "@edheltzel/pi-file-collector",
   "version": "0.0.10",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/file-collector",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/file-collector",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/file-collector"
   },
   "files": [
@@ -23,7 +23,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

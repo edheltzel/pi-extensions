@@ -1,5 +1,5 @@
-import { loadConfigOrDefault } from "@richardgill/pi-config";
-import { DEFAULT_OPTIONS, fileCollector } from "@richardgill/pi-file-collector";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
+import { DEFAULT_OPTIONS, fileCollector } from "@edheltzel/pi-file-collector";
 import { z } from "zod";
 
 const RegexPatternSchema = z.object({

@@ -1,4 +1,4 @@
-# @richardgill/pi-bits
+# @edheltzel/pi-bits
 
 A Pi package containing two independent extensions:
 
@@ -11,13 +11,13 @@ A Pi package containing two independent extensions:
 ## Try without installing
 
 ```sh
-pi -e npm:@richardgill/pi-bits
+pi -e npm:@edheltzel/pi-bits
 ```
 
 ## Install
 
 ```sh
-pi install npm:@richardgill/pi-bits
+pi install npm:@edheltzel/pi-bits
 ```
 
 Pi loads each bundled extension separately, so each can be enabled or disabled independently with `pi config`.

@@ -1,5 +1,5 @@
-import { loadConfigOrDefault } from "@richardgill/pi-config";
-import { DEFAULT_OPTIONS, subPiSkill } from "@richardgill/pi-sub-pi-skill";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
+import { DEFAULT_OPTIONS, subPiSkill } from "@edheltzel/pi-sub-pi-skill";
 import { z } from "zod";
 
 const ConfigSchema = z.object({

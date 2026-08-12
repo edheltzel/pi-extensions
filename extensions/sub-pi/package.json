@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-sub-pi",
+  "name": "@edheltzel/pi-sub-pi",
   "version": "0.0.9",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/sub-pi",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/sub-pi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/sub-pi"
   },
   "files": [
@@ -18,7 +18,7 @@
     ".": "./src/extension.ts"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

@@ -2,7 +2,7 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { loadConfigOrDefault } from "@richardgill/pi-config";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
 import { z } from "zod";
 
 export type ProjectResourcesOptions = {

@@ -1,14 +1,14 @@
 {
-  "name": "@richardgill/pi-handoff",
+  "name": "@edheltzel/pi-handoff",
   "version": "0.0.0",
   "private": true,
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/handoff",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/handoff",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/handoff"
   },
   "files": [

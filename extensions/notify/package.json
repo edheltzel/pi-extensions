@@ -1,14 +1,14 @@
 {
-  "name": "@richardgill/pi-notify",
+  "name": "@edheltzel/pi-notify",
   "version": "0.0.0",
   "private": true,
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/notify",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/notify",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/notify"
   },
   "files": [

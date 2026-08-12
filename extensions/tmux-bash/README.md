@@ -4,9 +4,9 @@ Drop-in `bash` replacement that runs commands in the background using tmux.
 
 ## Demo
 
-[![tmux-bash demo](https://raw.githubusercontent.com/richardgill/pi-extensions/main/extensions/tmux-bash/demo/demo.webp)](https://github.com/richardgill/pi-extensions/raw/main/extensions/tmux-bash/demo/demo.mp4)
+[![tmux-bash demo](https://raw.githubusercontent.com/edheltzel/pi-extensions/main/extensions/tmux-bash/demo/demo.webp)](https://github.com/edheltzel/pi-extensions/raw/main/extensions/tmux-bash/demo/demo.mp4)
 
-[Watch demo video](https://github.com/richardgill/pi-extensions/raw/main/extensions/tmux-bash/demo/demo.mp4)
+[Watch demo video](https://github.com/edheltzel/pi-extensions/raw/main/extensions/tmux-bash/demo/demo.mp4)
 
 ## How it works
 
@@ -21,7 +21,7 @@ Drop-in `bash` replacement that runs commands in the background using tmux.
 ## Install 
 
 ```bash
-pi install npm:@richardgill/pi-tmux-bash
+pi install npm:@edheltzel/pi-tmux-bash
 ```
 Then:
 
@@ -32,7 +32,7 @@ pi 'Run: for i in $(seq 1 90); do echo "$i"; sleep 1; done. Poll every 10s.'
 Or try it out without installing:
 
 ```bash
-pi -e npm:@richardgill/pi-tmux-bash 'Run: for i in $(seq 1 90); do echo "$i"; sleep 1; done. Poll every 10s.'
+pi -e npm:@edheltzel/pi-tmux-bash 'Run: for i in $(seq 1 90); do echo "$i"; sleep 1; done. Poll every 10s.'
 ```
 
 See [Configuration](#configuration) for defaults and overrides.
@@ -314,7 +314,7 @@ Other extensions can import tmux-bash helpers to target the same background tmux
 Reads `tmux-bash.jsonc` from the extension config folder (`PI_EXTENSION_CONFIG_DIR`, then Pi's agent directory).
 
 ```ts
-import { loadTmuxBashConfig } from "@richardgill/pi-tmux-bash/core";
+import { loadTmuxBashConfig } from "@edheltzel/pi-tmux-bash/core";
 
 const options = loadTmuxBashConfig();
 ```
@@ -325,7 +325,7 @@ Resolves the current git root, configured tmux session, and scoped window filter
 
 ```ts
 import type { ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { loadTmuxBashConfig, resolveTmuxBashContext } from "@richardgill/pi-tmux-bash/core";
+import { loadTmuxBashConfig, resolveTmuxBashContext } from "@edheltzel/pi-tmux-bash/core";
 
 const options = loadTmuxBashConfig();
 const context = resolveTmuxBashContext(ctx, options);
@@ -337,7 +337,7 @@ if (!context) ctx.ui.notify("Not in a git repository.", "error");
 Lists bash-created tmux windows matching the resolved scope.
 
 ```ts
-import { listBashWindows, resolveTmuxBashContext } from "@richardgill/pi-tmux-bash/core";
+import { listBashWindows, resolveTmuxBashContext } from "@edheltzel/pi-tmux-bash/core";
 
 const options = loadTmuxBashConfig();
 const context = resolveTmuxBashContext(ctx, options);

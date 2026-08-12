@@ -1,4 +1,4 @@
-# @richardgill/pi-up-history
+# @edheltzel/pi-up-history
 
 Seeds Pi's native editor history from previous saved sessions for the current working directory.
 
@@ -13,7 +13,7 @@ Seeds Pi's native editor history from previous saved sessions for the current wo
 ## Install
 
 ```bash
-pi install npm:@richardgill/pi-up-history
+pi install npm:@edheltzel/pi-up-history
 ```
 
 Development:

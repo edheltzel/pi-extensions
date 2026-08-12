@@ -12,7 +12,7 @@ import {
   type ToolCallEventResult,
   type ToolResultEvent,
 } from "@earendil-works/pi-coding-agent";
-import { loadConfigOrDefault } from "@richardgill/pi-config";
+import { loadConfigOrDefault } from "@edheltzel/pi-config";
 import { afterEach, describe, expect, it, test as testCases } from "vitest";
 
 import {

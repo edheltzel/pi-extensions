@@ -1,5 +1,5 @@
 import { DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES } from "@earendil-works/pi-coding-agent";
-import { loadConfigOrDefault, templatedString } from "@richardgill/pi-config";
+import { loadConfigOrDefault, templatedString } from "@edheltzel/pi-config";
 import { z } from "zod";
 
 export const BACKGROUND_BASH_STATUS_KEY = "backgroundBashTmuxCommands";

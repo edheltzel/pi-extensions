@@ -1,14 +1,14 @@
 {
-  "name": "@richardgill/pi-thinking-toggle",
+  "name": "@edheltzel/pi-thinking-toggle",
   "version": "0.0.0",
   "private": true,
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/thinking-toggle",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/thinking-toggle",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/thinking-toggle"
   },
   "files": [

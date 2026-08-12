@@ -1,11 +1,11 @@
-# @richardgill/pi-context-commands
+# @edheltzel/pi-context-commands
 
 Registers configurable Pi slash commands that run executables and load their output into model context.
 
 ## Install
 
 ```bash
-pi install npm:@richardgill/pi-context-commands
+pi install npm:@edheltzel/pi-context-commands
 ```
 
 Development:

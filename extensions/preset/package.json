@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-preset",
+  "name": "@edheltzel/pi-preset",
   "version": "0.0.8",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/preset",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/preset",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/preset"
   },
   "files": [
@@ -18,7 +18,7 @@
     ".": "./src/extension.ts"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

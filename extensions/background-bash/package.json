@@ -1,13 +1,13 @@
 {
-  "name": "@richardgill/pi-background-bash",
+  "name": "@edheltzel/pi-background-bash",
   "version": "0.0.2",
   "keywords": [
     "pi-package"
   ],
-  "homepage": "https://github.com/richardgill/pi-extensions/tree/main/extensions/background-bash",
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/background-bash",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richardgill/pi-extensions",
+    "url": "https://github.com/edheltzel/pi-extensions",
     "directory": "extensions/background-bash"
   },
   "files": [
@@ -24,7 +24,7 @@
     "tsc": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@richardgill/pi-config": "workspace:*",
+    "@edheltzel/pi-config": "workspace:*",
     "zod": "4.3.6"
   },
   "peerDependencies": {

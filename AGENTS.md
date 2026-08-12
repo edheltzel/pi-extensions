@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Develop independently loadable Pi extensions and supporting packages in one pnpm workspace. The repository follows Richard Gill's `extensions/` versus `packages/` ownership model and also carries Atlas-owned extensions distributed together through the repository's root Git package.
+Develop independently loadable Pi extensions and supporting packages in one pnpm workspace. The repository follows Atlas's `extensions/` versus `packages/` ownership model and also carries Atlas-owned extensions distributed together through the repository's root Git package.
 
 ## Ownership
 

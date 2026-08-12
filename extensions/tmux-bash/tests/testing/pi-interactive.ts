@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
 import path from "node:path";
-import { sleep } from "@richardgill/lib";
+import { sleep } from "@edheltzel/lib";
 import { shellQuote } from "../../src/tmux-utils";
 
 // Runs Pi interactively inside tmux and captures tmux pane output
