@@ -14,12 +14,11 @@ No license was declared in the source gist, so this workspace stays private and 
 - Starts interactive sessions with tool results collapsed.
 - Hides collapsed `read` output.
 - Summarizes collapsed `find`, `grep`, and `ls` results by count.
-- Summarizes collapsed shell output only when every simple pipeline command is on an explicit read-only allowlist.
 - Always shows shell output for command chains, redirection, substitutions, background execution, unknown commands, and other potentially mutating syntax.
 - Always shows `write` and `edit` results.
 - Keeps full output available through Pi's tool expansion control.
 
-This extension overrides Pi's built-in `read`, `bash`, `write`, `edit`, `find`, `grep`, and `ls` tools.
+This extension overrides Pi's built-in `read`, `write`, `edit`, `find`, `grep`, and `ls` tools. It intentionally does not override `bash`, so it can be used alongside the background-bash extension.
 Load order matters when another extension overrides those same tools or their renderers.
 
 ## Install

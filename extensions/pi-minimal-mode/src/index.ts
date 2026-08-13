@@ -1,5 +1,4 @@
 import {
-  createBashTool,
   createEditTool,
   createFindTool,
   createGrepTool,
@@ -10,8 +9,6 @@ import {
 } from "@earendil-works/pi-coding-agent";
 import { Text } from "@earendil-works/pi-tui";
 import { homedir } from "node:os";
-
-import { isReadOnlyCommand } from "./read-only-command";
 
 // Adapted from Virgil Bulens' minimal-mode gist:
 // https://gist.github.com/Virgil-Bulens/4d9d747ef85709b0850fc5aa01a6a4ef
@@ -53,7 +50,6 @@ const toolCache = new Map<string, ReturnType<typeof createBuiltInTools>>();
 function createBuiltInTools(cwd: string) {
   return {
     read: createReadTool(cwd),
-    bash: createBashTool(cwd),
     edit: createEditTool(cwd),
     write: createWriteTool(cwd),
     find: createFindTool(cwd),
@@ -98,32 +94,6 @@ export default function minimalMode(pi: ExtensionAPI) {
     renderResult(result, options, theme, context) {
       if (!options.expanded && !context.isError) return new Text("", 0, 0);
       return renderOutput(textOutput(result), theme, context.isError);
-    },
-  });
-
-  pi.registerTool({
-    ...initialTools.bash,
-    async execute(toolCallId, params, signal, onUpdate, ctx) {
-      return getBuiltInTools(ctx.cwd).bash.execute(toolCallId, params, signal, onUpdate);
-    },
-    renderCall(args, theme) {
-      const timeout = args.timeout ? theme.fg("muted", ` (timeout ${args.timeout}s)`) : "";
-      return new Text(
-        theme.fg("toolTitle", theme.bold(`$ ${args.command || "..."}`)) + timeout,
-        0,
-        0,
-      );
-    },
-    renderResult(result, options, theme, context) {
-      const output = textOutput(result);
-      const command = typeof context.args.command === "string" ? context.args.command : "";
-      if (!options.expanded && isReadOnlyCommand(command)) {
-        const lines = countLines(output);
-        return lines > 0
-          ? new Text(theme.fg("muted", ` → ${lines} lines`), 0, 0)
-          : new Text("", 0, 0);
-      }
-      return renderOutput(output, theme, context.isError);
     },
   });
 
