@@ -22,20 +22,6 @@ pi install git:github.com/edheltzel/pi-extensions
 
 Update the unpinned Git package with `pi update git:github.com/edheltzel/pi-extensions` or update every installed extension package with `pi update --extensions`.
 
-## Run bash commands in the background
-
-- Overrides Pi's built-in `bash` tool with a replacement that runs commands in the background.
-- Commands taking over 30 seconds move to the background by default.
-  - Prevents the agent from getting stuck if it runs `sleep 999999999999` by accident.
-- Background processes trigger an LLM turn when they complete.
-- See running processes and kill them with `/proc`.
-
-```sh
-pi install ./extensions/background-bash
-```
-
-[Source and documentation](./extensions/background-bash/README.md)
-
 ## Load custom `CLAUDE.md` and `.claude/skills`
 
 - Load custom context files, such as `CLAUDE.md`, `CLAUDE.local.md`, and `AGENTS.local.md`.
@@ -77,6 +63,18 @@ pi install ./extensions/project-resources
 Pi is aware of my tmux setup and can spawn new Pi windows and worktrees using the [tmux-pi](https://github.com/edheltzel/nix/blob/main/built/ai-agents/pi/skills/tmux-pi/SKILL.md?plain=1) skill.
 
 But if you're looking for "sub agents" directly in Pi, check out my [`sub-pi`](./extensions/sub-pi/README.md) and [`sub-pi-skill`](./extensions/sub-pi-skill/README.md) extensions which I used for a long time (be warned: it's not as polished as Claude Code or Codex).
+
+## Use Firstmate for managed multi-agent work
+
+If you want Pi to coordinate multiple supervised workers, use [Firstmate](https://github.com/kunchenguid/firstmate), a separate agent distro that supports Pi as a primary harness. Firstmate manages isolated worktrees, worker sessions, and task lifecycle; it is not another extension in this repository.
+
+```sh
+git clone https://github.com/kunchenguid/firstmate
+cd firstmate
+pi
+```
+
+Approve the project trust prompt on first launch so Pi loads Firstmate's tracked `.pi/extensions` files. See Firstmate's README and `AGENTS.md` for its supported workflow and backend setup.
 
 ## Up arrow remembers prompts from previous sessions
 
@@ -169,7 +167,6 @@ pi install npm:pi-codex-status
 pi install git:github.com/edheltzel/pi-extensions
 pi install npm:pi-atelier
 pi install ./packages/pi-bits
-pi install ./extensions/background-bash
 pi install ./extensions/context-commands
 pi install ./extensions/project-resources
 pi install ./extensions/pi-up-history
