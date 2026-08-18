@@ -212,6 +212,8 @@ These workspaces are not distributed individually. Footer and trust-all-projects
 ### 3rd party (not mine)
 
 - [`npm:pi-atelier`](https://github.com/michaelmjhhhh/pi-atelier) - Responsive status rail and live activity sidebar; installed externally instead of vendored here.
+- [`npm:@dietrichgebert/ponytail`](https://github.com/DietrichGebert/ponytail) - Lazy senior-dev mode that prefers reuse, stdlib, and native features over new code.
+- [`npm:pi-compact-transcript`](https://github.com/avhagedorn/pi-compact-transcript) - Collapses tool calls into one-line previews and adds a per-run summary.
 - [`npm:@calesennett/pi-codex-fast`](https://www.npmjs.com/package/@calesennett/pi-codex-fast) - Adds OpenAI Codex `/fast` mode.
 - [`npm:pi-codex-status`](https://github.com/lhl/pi-codex-status) - `/codex:status` shows OpenAI Codex usage info.
 

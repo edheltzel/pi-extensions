@@ -141,6 +141,30 @@ Update it with `pi update npm:pi-atelier`.
 
 [Source and documentation](https://github.com/michaelmjhhhh/pi-atelier)
 
+## Install Ponytail
+
+Ponytail is a third-party package and is not copied into this repository:
+
+```sh
+pi install npm:@dietrichgebert/ponytail
+```
+
+Update it with `pi update npm:@dietrichgebert/ponytail`.
+
+[Source and documentation](https://github.com/DietrichGebert/ponytail)
+
+## Install compact transcript
+
+Compact transcript is a third-party package and is not copied into this repository:
+
+```sh
+pi install npm:pi-compact-transcript
+```
+
+Update it with `pi update npm:pi-compact-transcript`.
+
+[Source and documentation](https://github.com/avhagedorn/pi-compact-transcript)
+
 ## Enable Codex fast mode
 
 Adds OpenAI Codex `/fast` mode.
@@ -166,6 +190,8 @@ pi install npm:pi-codex-status
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
 pi install npm:pi-atelier
+pi install npm:@dietrichgebert/ponytail
+pi install npm:pi-compact-transcript
 pi install ./packages/pi-bits
 pi install ./extensions/context-commands
 pi install ./extensions/project-resources
