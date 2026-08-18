@@ -241,16 +241,19 @@ describe("footer render", () => {
     expect(text).toContain("3 background /proc");
   });
 
-  it("reads cache from the latest successful assistant prompt, skipping aborted/error prompts", () => {
-    const branchEntries = [
-      assistantEntry({ input: 100, cacheRead: 100, cacheWrite: 0 }), // older, successful -> 50%
-      assistantEntry({ input: 0, cacheRead: 300, cacheWrite: 0 }, "aborted"), // newer, aborted -> 100%
-    ];
-    const text = stripAnsi(mountFooter({ branchEntries }).render(200).join("\n"));
+  it.each(["aborted", "error"])(
+    "reads cache from the latest successful assistant prompt, skipping %s prompts",
+    (stopReason) => {
+      const branchEntries = [
+        assistantEntry({ input: 100, cacheRead: 100, cacheWrite: 0 }),
+        assistantEntry({ input: 0, cacheRead: 300, cacheWrite: 0 }, stopReason),
+      ];
+      const text = stripAnsi(mountFooter({ branchEntries }).render(200).join("\n"));
 
-    expect(text).toContain("50%");
-    expect(text).not.toContain("100%");
-  });
+      expect(text).toContain("50%");
+      expect(text).not.toContain("100%");
+    },
+  );
 
   it("hides cache usage when the latest successful prompt has no prompt tokens", () => {
     const branchEntries = [
