@@ -33,7 +33,7 @@ Update the unpinned Git package with `pi update git:github.com/edheltzel/pi-exte
 {
   "contextFilenames": ["AGENTS.local.md", "CLAUDE.local.md"],
   "contextSectionTitle": "Extra Context Files",
-  "skillDirectoryPaths": [".pi/skills", ".claude/skills"]
+  "skillDirectoryPaths": [".pi/skills", ".claude/skills"],
 }
 ```
 
@@ -104,15 +104,15 @@ pi install ./extensions/context-commands
       "name": "diff",
       "description": "Load local changes into context",
       "command": "git",
-      "commandArgs": ["diff", "HEAD"]
+      "commandArgs": ["diff", "HEAD"],
     },
     {
       "name": "pr-diff",
       "description": "Load PR and local changes into context",
       "command": "git",
-      "commandArgs": ["diff", "--merge-base", "origin/main"]
-    }
-  ]
+      "commandArgs": ["diff", "--merge-base", "origin/main"],
+    },
+  ],
 }
 ```
 
@@ -128,18 +128,6 @@ pi install ./packages/pi-bits
 ```
 
 [Source and documentation](./packages/pi-bits/README.md)
-
-## Install Pi Atelier
-
-Pi Atelier is a third-party package and is not copied into this repository:
-
-```sh
-pi install npm:pi-atelier
-```
-
-Update it with `pi update npm:pi-atelier`.
-
-[Source and documentation](https://github.com/michaelmjhhhh/pi-atelier)
 
 ## Install Ponytail
 
@@ -189,7 +177,6 @@ pi install npm:pi-codex-status
 
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
-pi install npm:pi-atelier
 pi install npm:@dietrichgebert/ponytail
 pi install npm:pi-compact-transcript
 pi install ./packages/pi-bits

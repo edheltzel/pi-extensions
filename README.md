@@ -59,7 +59,7 @@ pi install git:github.com/edheltzel/pi-extensions
 Install a package from npm:
 
 ```sh
-pi install npm:pi-atelier
+pi install npm:pi-compact-transcript
 ```
 
 During development, install a workspace directly from this checkout:
@@ -120,7 +120,7 @@ Update one package:
 
 ```sh
 pi update git:github.com/edheltzel/pi-extensions
-pi update npm:pi-atelier
+pi update npm:pi-compact-transcript
 ```
 
 `pi update --all` also updates the Pi application itself. Versioned npm packages and Git packages installed with an explicit tag or commit are pinned; the general update command does not move them to a new version or ref. Install the desired new ref explicitly when you want to move a pinned package:
@@ -211,7 +211,6 @@ These workspaces are not distributed individually. Footer and trust-all-projects
 
 ### 3rd party (not mine)
 
-- [`npm:pi-atelier`](https://github.com/michaelmjhhhh/pi-atelier) - Responsive status rail and live activity sidebar; installed externally instead of vendored here.
 - [`npm:@dietrichgebert/ponytail`](https://github.com/DietrichGebert/ponytail) - Lazy senior-dev mode that prefers reuse, stdlib, and native features over new code.
 - [`npm:pi-compact-transcript`](https://github.com/avhagedorn/pi-compact-transcript) - Collapses tool calls into one-line previews and adds a per-run summary.
 - [`npm:@calesennett/pi-codex-fast`](https://www.npmjs.com/package/@calesennett/pi-codex-fast) - Adds OpenAI Codex `/fast` mode.

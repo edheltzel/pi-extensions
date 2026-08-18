@@ -9,7 +9,7 @@ Develop independently loadable Pi extensions and supporting packages in one pnpm
 - `extensions/` owns Pi extension workspaces. Public and private extensions use the same source layout; private workspaces retain `"private": true`.
 - `extensions/pi-anti-slop/`, `extensions/pi-better-ask-user/`, and `extensions/pi-better-btw/` are Atlas-owned. The remaining `extensions/` workspaces are the inherited Richard Gill stack, loaded from this repo rather than `npm:@richardgill/*`.
 - `packages/` owns shared libraries, utilities, and composite distributions such as `pi-bits`; it must not hold copied third-party repositories.
-- Third-party Pi packages are referenced from Pi settings or setup documentation, never copied into this repository. `pi-atelier` is installed as `npm:pi-atelier`.
+- Third-party Pi packages are referenced from Pi settings or setup documentation, never copied into this repository. `pi-compact-transcript` is installed as `npm:pi-compact-transcript`.
 - Package-level `AGENTS.md` files own extension-specific behavior, licensing, and verification rules.
 
 ## Local Contracts
