@@ -120,7 +120,7 @@ pi install ./extensions/context-commands
 
 ## `pi-bits`: the rest of my personal setup
 
-- A compact footer showing the model, thinking level, context usage, and extension statuses.
+- The [`pi-footer`](./extensions/footer/README.md) Atlas-style status line.
 - Automatically trust every new folder - bypassing Pi's project trust prompt.
 
 ```sh

@@ -2,7 +2,7 @@
 
 A Pi package containing two independent extensions:
 
-- `footer` - Replaces Pi's footer with model, thinking, context, and extension status information.
+- [`footer`](../../extensions/footer/README.md) - Atlas-style Pi status line.
 - `trust-all-projects` - Automatically trusts and remembers every project.
 
 > [!WARNING]

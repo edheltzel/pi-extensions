@@ -18,7 +18,7 @@ Develop independently loadable Pi extensions and supporting packages in one pnpm
 - Keep TypeScript source under `src/` and tests under `tests/` with `.unit.test.ts`, `.integration.test.ts`, or `.e2e.test.ts` suffixes.
 - Pi loads TypeScript through jiti; extension workspaces normally need no build step.
 - Keep each extension independently loadable through its own `package.json` `pi` manifest.
-- The root `pi` manifest is the Git collection at `git:github.com/edheltzel/pi-extensions`. It loads every `extensions/*/src/index.ts` entry plus Atlas skill folders. Do not also install `npm:@richardgill/*` copies of the same extensions.
+- The root `pi` manifest is the Git collection at `git:github.com/edheltzel/pi-extensions`. Only resources listed in the root `package.json` belong to that collection; see the root README for installation paths for other workspaces. Do not also install `npm:@richardgill/*` copies of the same extensions.
 - Atlas-owned workspaces remain private until an explicit npm publishing decision removes that safeguard and adds a release changeset.
 - Preserve upstream attribution, copyright, and split-license notices in package-level license files.
 

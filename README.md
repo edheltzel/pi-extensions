@@ -205,7 +205,7 @@ Below are the resources used to shape this Pi setup.
 
 These workspaces are not distributed individually. Footer and trust-all-projects are bundled by [`pi-bits`](./packages/pi-bits/README.md); thinking-toggle remains local-only.
 
-- [`pi-footer`](./extensions/footer/README.md) - Replaces the footer with model, thinking, context, and extension status information.
+- [`pi-footer`](./extensions/footer/README.md) - Atlas-style Pi status line.
 - [`pi-trust-all-projects`](./extensions/trust-all-projects/README.md) - Automatically trusts every project.
 - [`pi-thinking-toggle`](./extensions/thinking-toggle/README.md) - Cycles medium, high, and xhigh thinking levels.
 

@@ -347,28 +347,23 @@ const windows = context ? listBashWindows(context) : [];
 
 ### Read the active background count from footer status
 
-Tmux-bash publishes the active background count with Pi's status API. Footer extensions can read it from `footerData.getExtensionStatuses()` and handle their own string formatting.
+Tmux-bash publishes the active background count with Pi's status API. Footer extensions can read the formatted value from `footerData.getExtensionStatuses()` and apply their own display styling.
 
 ```ts
 const backgroundBashStatusKey = "backgroundBashTmuxCommands";
-
-const formatBackgroundBashStatus = (value: string) =>
-  `${value} background proc${value === "1" ? "" : "s"}`;
 
 ctx.ui.setFooter((_tui, theme, footerData) => ({
   invalidate() {},
   render(width: number): string[] {
     const status = footerData.getExtensionStatuses().get(backgroundBashStatusKey);
-    const backgroundBashStatus = status ? formatBackgroundBashStatus(status) : "";
 
-    return [theme.fg("dim", backgroundBashStatus)];
+    return [theme.fg("dim", status ?? "")];
   },
 }));
 ```
 
-The status key is `backgroundBashTmuxCommands`. Status values are strings; tmux-bash clears the status when there are no active background windows.
+The status key is `backgroundBashTmuxCommands`. Its value already includes the count and `background proc` or `background procs`; tmux-bash clears the status when there are no active background windows.
 
 ## Credits
 
 This extension was inspired by [`indigoviolet/pi-tmux`](https://github.com/indigoviolet/pi-tmux).
-
