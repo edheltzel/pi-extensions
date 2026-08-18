@@ -83,7 +83,7 @@ type RenderHarness = {
   rawRender: (width: number) => string;
   statuses: Map<string, string>;
   branchReadCount: () => number;
-  updateBranch: (entries: unknown[]) => void;
+  updateBranch: (entries: unknown[], event?: "message_end" | "session_tree") => void;
 };
 
 type AssistantUsage = { input: number; cacheRead: number; cacheWrite: number };
@@ -102,6 +102,8 @@ const mountFooter = (options?: {
 }): RenderHarness => {
   const statuses = options?.statuses ?? new Map<string, string>();
   let branchEntries = options?.branchEntries ?? defaultBranch;
+  let leafSequence = 0;
+  let leafId = `leaf-${leafSequence}`;
   const handlers = new Map<string, (event: unknown, ctx: ExtensionContext) => void>();
   const getBranch = vi.fn(() => branchEntries);
 
@@ -123,6 +125,7 @@ const mountFooter = (options?: {
     sessionManager: {
       getCwd: () => p("", "home", "user", "code", "myproj"),
       getBranch,
+      getLeafId: () => leafId,
     },
     ui: {},
   } as unknown as ExtensionContext;
@@ -158,9 +161,11 @@ const mountFooter = (options?: {
     rawRender: (width: number) => active.render(width).join("\n"),
     statuses,
     branchReadCount: () => getBranch.mock.calls.length,
-    updateBranch: (entries: unknown[]) => {
+    updateBranch: (entries: unknown[], event = "message_end") => {
       branchEntries = entries;
-      handlers.get("message_end")?.({}, ctx);
+      leafSequence += 1;
+      leafId = `leaf-${leafSequence}`;
+      handlers.get(event)?.({}, ctx);
     },
   };
 };
@@ -247,14 +252,27 @@ describe("footer render", () => {
     expect(text).not.toContain("100%");
   });
 
-  it("caches branch-derived usage until a message changes the session", () => {
+  it("hides cache usage when the latest successful prompt has no prompt tokens", () => {
+    const branchEntries = [
+      assistantEntry({ input: 100, cacheRead: 100, cacheWrite: 0 }),
+      assistantEntry({ input: 0, cacheRead: 0, cacheWrite: 0 }),
+    ];
+    const text = stripAnsi(mountFooter({ branchEntries }).rawRender(200));
+
+    expect(text).not.toContain(NERD_FONT_ICONS.cache);
+  });
+
+  it("caches branch-derived usage until the session leaf changes", () => {
     const harness = mountFooter();
 
     expect(stripAnsi(harness.rawRender(200))).toContain("60%");
     harness.render(120);
     expect(harness.branchReadCount()).toBe(1);
 
-    harness.updateBranch([assistantEntry({ input: 0, cacheRead: 1, cacheWrite: 0 })]);
+    harness.updateBranch(
+      [assistantEntry({ input: 0, cacheRead: 1, cacheWrite: 0 })],
+      "session_tree",
+    );
     expect(stripAnsi(harness.rawRender(200))).toContain("100%");
     expect(harness.branchReadCount()).toBe(2);
   });

@@ -239,24 +239,21 @@ const latestCacheHitPercent = (ctx: ExtensionContext): number | null => {
     if (entry.type !== "message" || entry.message.role !== "assistant") continue;
     if (entry.message.stopReason === "aborted" || entry.message.stopReason === "error") continue;
 
-    const percent = calculateCacheHitPercent(entry.message.usage);
-    if (percent !== null) return percent;
+    return calculateCacheHitPercent(entry.message.usage);
   }
   return null;
 };
 
 const createCacheHitPercentReader = (ctx: ExtensionContext) => {
-  let dirty = true;
+  let cachedLeafId: string | null | undefined;
   let cachedPercent: number | null = null;
 
   return {
-    invalidate() {
-      dirty = true;
-    },
     read() {
-      if (dirty) {
+      const leafId = ctx.sessionManager.getLeafId();
+      if (leafId !== cachedLeafId) {
         cachedPercent = latestCacheHitPercent(ctx);
-        dirty = false;
+        cachedLeafId = leafId;
       }
       return cachedPercent;
     },
@@ -360,17 +357,13 @@ const padFooterLine = (line: string, width: number) => {
 
 export default function footer(pi: ExtensionAPI) {
   let requestRender: (() => void) | undefined;
-  let invalidateCache: (() => void) | undefined;
   const refresh = () => requestRender?.();
-  const refreshCache = () => {
-    invalidateCache?.();
-    refresh();
-  };
 
   pi.on("turn_start", refresh);
-  pi.on("message_end", refreshCache);
+  pi.on("message_end", refresh);
   pi.on("agent_settled", refresh);
-  pi.on("session_compact", refreshCache);
+  pi.on("session_compact", refresh);
+  pi.on("session_tree", refresh);
   pi.on("model_select", refresh);
   pi.on("thinking_level_select", refresh);
 
@@ -384,20 +377,14 @@ export default function footer(pi: ExtensionAPI) {
       const renderNow = () => {
         if (active) tui.requestRender();
       };
-      const renderBranchChange = () => {
-        cacheReader.invalidate();
-        renderNow();
-      };
       requestRender = renderNow;
-      invalidateCache = cacheReader.invalidate;
-      const unsubscribeBranch = footerData.onBranchChange(renderBranchChange);
+      const unsubscribeBranch = footerData.onBranchChange(renderNow);
 
       return {
         dispose() {
           active = false;
           unsubscribeBranch();
           if (requestRender === renderNow) requestRender = undefined;
-          if (invalidateCache === cacheReader.invalidate) invalidateCache = undefined;
         },
         invalidate() {
           palette = paletteFor(theme);
@@ -433,6 +420,5 @@ export default function footer(pi: ExtensionAPI) {
 
   pi.on("session_shutdown", () => {
     requestRender = undefined;
-    invalidateCache = undefined;
   });
 }
