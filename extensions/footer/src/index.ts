@@ -201,8 +201,12 @@ const bucketColor = (position: number, width: number, palette: StatusPalette): R
   return mix(warning, high, (percent - 66) / 34);
 };
 
-const renderContextBar = (percent: number, width: number, palette: StatusPalette): string => {
-  const filled = contextFilledCells(percent, width);
+const renderContextBar = (
+  percent: number | null,
+  width: number,
+  palette: StatusPalette,
+): string => {
+  const filled = percent === null ? 0 : contextFilledCells(percent, width);
   let output = "";
   for (let position = 1; position <= width; position += 1) {
     const bucket =
@@ -241,6 +245,24 @@ const latestCacheHitPercent = (ctx: ExtensionContext): number | null => {
   return null;
 };
 
+const createCacheHitPercentReader = (ctx: ExtensionContext) => {
+  let dirty = true;
+  let cachedPercent: number | null = null;
+
+  return {
+    invalidate() {
+      dirty = true;
+    },
+    read() {
+      if (dirty) {
+        cachedPercent = latestCacheHitPercent(ctx);
+        dirty = false;
+      }
+      return cachedPercent;
+    },
+  };
+};
+
 // Build the ordered footer items: π + version, provider/model + thinking,
 // working directory, git branch, context meter, and cache hit rate.
 const buildStatusItems = (
@@ -250,6 +272,7 @@ const buildStatusItems = (
   branch: string | null,
   terminalWidth: number,
   layoutWidth: number,
+  cachePercent: number | null,
 ): string[] => {
   const model = ctx.model;
   const provider = sanitizeLabel(model?.provider || "no-provider");
@@ -258,8 +281,10 @@ const buildStatusItems = (
   const cwd = formatCurrentDirectory(ctx.sessionManager.getCwd());
   const gitBranch = sanitizeLabel(branch || "no-git");
   const usage = ctx.getContextUsage();
-  const contextPercent = Math.max(0, Math.min(100, Math.floor(usage?.percent ?? 0)));
-  const cachePercent = latestCacheHitPercent(ctx);
+  const contextPercent =
+    typeof usage?.percent === "number" && Number.isFinite(usage.percent)
+      ? Math.max(0, Math.min(100, Math.floor(usage.percent)))
+      : null;
   const separator = color(palette.separator, "·");
 
   const providerModel = `${color(palette.muted, `${provider}/`)}${color(palette.brand, modelId)}`;
@@ -268,10 +293,15 @@ const buildStatusItems = (
     color(palette.path, SYMBOLS.thinking),
     color(palette.brand, thinking),
   ].join(" ");
-  const contextText = `${renderContextBar(contextPercent, contextBarWidth(terminalWidth), palette)} ${color(
-    usageColor(contextPercent, palette),
-    `${contextPercent}%`,
-  )}`;
+  const contextLabel =
+    contextPercent === null
+      ? color(palette.muted, "n/a")
+      : color(usageColor(contextPercent, palette), `${contextPercent}%`);
+  const contextText = `${renderContextBar(
+    contextPercent,
+    contextBarWidth(terminalWidth),
+    palette,
+  )} ${contextLabel}`;
 
   const items = [
     `${color(palette.pi, SYMBOLS.pi)} ${color(palette.text, VERSION)}`,
@@ -296,7 +326,7 @@ const buildStatusItems = (
 // `codex-status` and `mcp` are suppressed entirely; every other extension status
 // keeps its own ANSI styling.
 const hiddenStatusKeys = new Set(["codex-status", "mcp"]);
-const backgroundBashStatusKey = "backgroundBashProcesses";
+const backgroundBashStatusKey = "backgroundBashTmuxCommands";
 
 const formatStatus = (key: string, value: string, theme: Theme) => {
   if (key !== backgroundBashStatusKey) return sanitizeStatusText(value);
@@ -330,12 +360,17 @@ const padFooterLine = (line: string, width: number) => {
 
 export default function footer(pi: ExtensionAPI) {
   let requestRender: (() => void) | undefined;
+  let invalidateCache: (() => void) | undefined;
   const refresh = () => requestRender?.();
+  const refreshCache = () => {
+    invalidateCache?.();
+    refresh();
+  };
 
   pi.on("turn_start", refresh);
-  pi.on("message_end", refresh);
+  pi.on("message_end", refreshCache);
   pi.on("agent_settled", refresh);
-  pi.on("session_compact", refresh);
+  pi.on("session_compact", refreshCache);
   pi.on("model_select", refresh);
   pi.on("thinking_level_select", refresh);
 
@@ -345,17 +380,24 @@ export default function footer(pi: ExtensionAPI) {
     ctx.ui.setFooter((tui, theme, footerData) => {
       let active = true;
       let palette = paletteFor(theme);
+      const cacheReader = createCacheHitPercentReader(ctx);
       const renderNow = () => {
         if (active) tui.requestRender();
       };
+      const renderBranchChange = () => {
+        cacheReader.invalidate();
+        renderNow();
+      };
       requestRender = renderNow;
-      const unsubscribeBranch = footerData.onBranchChange(renderNow);
+      invalidateCache = cacheReader.invalidate;
+      const unsubscribeBranch = footerData.onBranchChange(renderBranchChange);
 
       return {
         dispose() {
           active = false;
           unsubscribeBranch();
           if (requestRender === renderNow) requestRender = undefined;
+          if (invalidateCache === cacheReader.invalidate) invalidateCache = undefined;
         },
         invalidate() {
           palette = paletteFor(theme);
@@ -371,6 +413,7 @@ export default function footer(pi: ExtensionAPI) {
             footerData.getGitBranch(),
             width,
             contentWidth,
+            cacheReader.read(),
           );
 
           const statusLine = getStatusLine(
@@ -390,5 +433,6 @@ export default function footer(pi: ExtensionAPI) {
 
   pi.on("session_shutdown", () => {
     requestRender = undefined;
+    invalidateCache = undefined;
   });
 }

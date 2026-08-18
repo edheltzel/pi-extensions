@@ -82,6 +82,8 @@ type RenderHarness = {
   render: (width: number) => string[];
   rawRender: (width: number) => string;
   statuses: Map<string, string>;
+  branchReadCount: () => number;
+  updateBranch: (entries: unknown[]) => void;
 };
 
 type AssistantUsage = { input: number; cacheRead: number; cacheWrite: number };
@@ -95,12 +97,13 @@ const defaultBranch = [assistantEntry({ input: 100, cacheRead: 300, cacheWrite: 
 
 const mountFooter = (options?: {
   statuses?: Map<string, string>;
-  contextPercent?: number;
+  contextPercent?: number | null;
   branchEntries?: unknown[];
 }): RenderHarness => {
   const statuses = options?.statuses ?? new Map<string, string>();
-  const branchEntries = options?.branchEntries ?? defaultBranch;
+  let branchEntries = options?.branchEntries ?? defaultBranch;
   const handlers = new Map<string, (event: unknown, ctx: ExtensionContext) => void>();
+  const getBranch = vi.fn(() => branchEntries);
 
   const pi = {
     on: (event: string, handler: (event: unknown, ctx: ExtensionContext) => void) => {
@@ -115,11 +118,11 @@ const mountFooter = (options?: {
     getContextUsage: () => ({
       tokens: 50_000,
       contextWindow: 200_000,
-      percent: options?.contextPercent ?? 25,
+      percent: options?.contextPercent === undefined ? 25 : options.contextPercent,
     }),
     sessionManager: {
       getCwd: () => p("", "home", "user", "code", "myproj"),
-      getBranch: () => branchEntries,
+      getBranch,
     },
     ui: {},
   } as unknown as ExtensionContext;
@@ -154,6 +157,11 @@ const mountFooter = (options?: {
     render: (width: number) => active.render(width),
     rawRender: (width: number) => active.render(width).join("\n"),
     statuses,
+    branchReadCount: () => getBranch.mock.calls.length,
+    updateBranch: (entries: unknown[]) => {
+      branchEntries = entries;
+      handlers.get("message_end")?.({}, ctx);
+    },
   };
 };
 
@@ -198,6 +206,13 @@ describe("footer render", () => {
     expect(countCells(render(34))).toBe(6);
   });
 
+  it("renders unavailable context usage without inventing zero percent", () => {
+    const text = stripAnsi(mountFooter({ contextPercent: null }).rawRender(200));
+
+    expect(text).toContain("n/a");
+    expect(text).not.toContain(" 0%");
+  });
+
   it("suppresses mcp and codex-status while preserving another extension's ANSI styling", () => {
     const styled = `${ESC}[32mbuild-ok${ESC}[39m`;
     const statuses = new Map<string, string>([
@@ -214,10 +229,11 @@ describe("footer render", () => {
   });
 
   it("keeps the background process special case", () => {
-    const statuses = new Map<string, string>([["backgroundBashProcesses", "3 procs"]]);
+    const statuses = new Map<string, string>([
+      ["backgroundBashTmuxCommands", "3 background procs"],
+    ]);
     const text = stripAnsi(mountFooter({ statuses }).render(200).join("\n"));
-    expect(text).toContain("3 ");
-    expect(text).toContain("/proc");
+    expect(text).toContain("3 background /proc");
   });
 
   it("reads cache from the latest successful assistant prompt, skipping aborted/error prompts", () => {
@@ -229,5 +245,17 @@ describe("footer render", () => {
 
     expect(text).toContain("50%");
     expect(text).not.toContain("100%");
+  });
+
+  it("caches branch-derived usage until a message changes the session", () => {
+    const harness = mountFooter();
+
+    expect(stripAnsi(harness.rawRender(200))).toContain("60%");
+    harness.render(120);
+    expect(harness.branchReadCount()).toBe(1);
+
+    harness.updateBranch([assistantEntry({ input: 0, cacheRead: 1, cacheWrite: 0 })]);
+    expect(stripAnsi(harness.rawRender(200))).toContain("100%");
+    expect(harness.branchReadCount()).toBe(2);
   });
 });
