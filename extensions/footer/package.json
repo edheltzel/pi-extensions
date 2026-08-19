@@ -20,8 +20,8 @@
   },
   "scripts": {
     "tsc": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest --run",
-    "test:watch": "vitest"
+    "test": "vitest --run --root ../.. extensions/footer/tests",
+    "test:watch": "vitest --root ../.. extensions/footer/tests"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
