@@ -11,7 +11,7 @@ The root Pi manifest exposes these Atlas-owned private workspaces:
 - [`pi-anti-slop`](./extensions/pi-anti-slop/README.md) - substance-defect review and repair skills plus a local house-style gate
 - [`pi-better-ask-user`](./extensions/pi-better-ask-user/README.md) - interactive decision UI, decision-gate skill, and optional Herdr integration
 - [`pi-better-btw`](./extensions/pi-better-btw/README.md) - temporary in-memory side conversation overlay
-- [`pi-leader-key`](./extensions/pi-leader-key/README.md) - Ctrl+X leader-key command palette
+- [`pi-leader-key`](./extensions/pi-leader-key/README.md) - Ctrl+Q leader-key command palette
 - [`pi-tool-pills`](./extensions/pi-tool-pills/README.md) - colored tool pills and Shiki diffs for built-in tools
 
 The collection is a single Git-installable Pi package. The tutorial below explains how to install it, select its resources, develop against a local checkout, and publish updates.

@@ -59,7 +59,7 @@ Interactive tests may run Pi in a bounded tmux session, send input, capture the 
 - `extensions/pi-anti-slop/AGENTS.md` - anti-authorship firewall, scanner packaging, licensing, and verification.
 - `extensions/pi-better-ask-user/AGENTS.md` - decision UI, preview workflow, Herdr integration, and verification.
 - `extensions/pi-better-btw/AGENTS.md` - temporary side-conversation overlay behavior and verification.
-- `extensions/pi-leader-key/AGENTS.md` - Ctrl+X leader palette, model pickers, and verification.
+- `extensions/pi-leader-key/AGENTS.md` - Ctrl+Q leader palette, model pickers, and verification.
 - `extensions/pi-tool-pills/AGENTS.md` - tool pills, collapsed output, write/edit diffs, and verification.
 
 ## Maintaining this file
