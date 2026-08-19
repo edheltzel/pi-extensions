@@ -74,7 +74,10 @@
     "@earendil-works/pi-ai",
     "@earendil-works/pi-coding-agent",
     "@earendil-works/pi-tui",
-    "@sinclair/typebox"
+    "@sinclair/typebox",
+    "@shikijs/cli",
+    "diff",
+    "shiki"
   ],
   "ignoreIssues": {
     "extensions/preset/src/extension.ts": ["duplicates"]

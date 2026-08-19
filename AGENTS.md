@@ -19,6 +19,7 @@ Develop independently loadable Pi extensions and supporting packages in one pnpm
 - Pi loads TypeScript through jiti; extension workspaces normally need no build step.
 - Keep each extension independently loadable through its own `package.json` `pi` manifest.
 - The root `pi` manifest is the Git collection at `git:github.com/edheltzel/pi-extensions`. Only resources listed in the root `package.json` belong to that collection; see the root README for installation paths for other workspaces.
+- Pi's Git install only installs root `package.json` dependencies. Collection extensions that import runtime npm packages (currently `diff`, `shiki`, `@shikijs/cli` for `pi-tool-pills`) must also list those deps on the collection root.
 - Atlas-owned workspaces remain private until an explicit npm publishing decision removes that safeguard and adds a release changeset.
 - Preserve upstream attribution, copyright, and split-license notices in package-level license files.
 

@@ -159,16 +159,17 @@ pi remove -l ./extensions/context-commands
 To add or remove resources from the Atlas Git collection:
 
 1. Edit the root [`package.json`](./package.json) `pi.extensions` or `pi.skills` arrays.
-2. If dependencies or workspace metadata changed, run `pnpm install` so [`pnpm-lock.yaml`](./pnpm-lock.yaml) stays current.
-3. Run the relevant checks before sharing the change:
+2. If a collection extension imports a runtime npm package, list it on the root `package.json` `dependencies` as well. Pi's Git install only installs that root manifest, not workspace `package.json` files.
+3. If dependencies or workspace metadata changed, run `pnpm install` so [`pnpm-lock.yaml`](./pnpm-lock.yaml) stays current.
+4. Run the relevant checks before sharing the change:
 
    ```sh
    pnpm run typecheck
    pnpm run test
    ```
 
-4. Commit and push the repository change.
-5. Update the installed Git package:
+5. Commit and push the repository change.
+6. Update the installed Git package:
 
    ```sh
    pi update git:github.com/edheltzel/pi-extensions
