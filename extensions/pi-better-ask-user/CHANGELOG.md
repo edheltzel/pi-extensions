@@ -5,6 +5,7 @@
 ### Added
 
 - `/better-ask-preview <fixture.json>` for running canonical `better_ask_user` question arrays through the real Pi TUI without an agent turn, including a bundled smoke fixture and documented `pi --no-extensions -e ...` no-install workflow.
+- Optional Orca blocked-state notifications when `ORCA_PANE_KEY` plus hook port/token are present. Interactive waits emit `orca:blocked` and POST `/hook/pi` `AskUserQuestion` tool_call / tool_execution_end events so Orca can show Needs You and fire attention pings.
 
 ### Changed
 
@@ -38,7 +39,7 @@
 
 ### Fixed
 
-- `ask_user` failing under schema-mangling hosts/proxies (cmux, Google function calling, Codex-style backends) that strip or reject the `anyOf` union in the `options` items schema. Models behind such proxies could not see the option shape, guessed keys like `{ "text": … }` or sent empty objects, and every option was silently dropped — the tool then fell into an empty freeform prompt that ended in `Cancelled`. Closes #22. Three changes:
+- `ask_user` failing under schema-mangling hosts/proxies (cmux, Google function calling, Codex-style backends) that strip or reject the `anyOf` union in the `options` items schema. Models behind such proxies could not see the option shape, guessed keys like `{ "text": … }` or sent empty objects, and every option was silently dropped, so the tool then fell into an empty freeform prompt that ended in `Cancelled`. Closes #22. Three changes:
   - The `options` schema is now a flat `{ title, description? }` object array with no `anyOf`, so every provider sees a concrete shape. Plain strings remain accepted at runtime.
   - Option normalization now salvages common alias keys (`label`, `text`, `value`, `name`, `option`) and coerces primitive entries, instead of dropping anything without a `title`.
   - When every option is malformed, the tool returns an error result telling the model the expected shape so it can retry, instead of silently showing a freeform prompt.
@@ -47,7 +48,7 @@
 
 ### Changed
 
-- Declare `executionMode: "sequential"` on the `ask_user` tool so the agent loop awaits the user's answer before running any other tool call in the same assistant turn. Without this, hosts running the default `"parallel"` tool-execution mode could batch `ask_user` with `bash`/`edit`/`write` calls and let those execute — potentially with irreversible side effects — before the user even sees the prompt. Requires no peer-dep bump; `executionMode` has been part of `ToolDefinition` since `@earendil-works/pi-coding-agent@0.74.0`.
+- Declare `executionMode: "sequential"` on the `ask_user` tool so the agent loop awaits the user's answer before running any other tool call in the same assistant turn. Without this, hosts running the default `"parallel"` tool-execution mode could batch `ask_user` with `bash`/`edit`/`write` calls and let those execute, potentially with irreversible side effects, before the user even sees the prompt. Requires no peer-dep bump; `executionMode` has been part of `ToolDefinition` since `@earendil-works/pi-coding-agent@0.74.0`.
 
 ## [0.11.1](https://github.com/edlsh/pi-ask-user/releases/tag/v0.11.1) - 2026-05-23
 
@@ -119,7 +120,7 @@
 
 ### Fixed
 
-- Multi-line selected option highlighting — when an option title wraps across multiple lines, all lines now highlight with accent styling instead of only the first line with the `→` pointer
+- Multi-line selected option highlighting: when an option title wraps across multiple lines, all lines now highlight with accent styling instead of only the first line with the `→` pointer
 
 ### Changed
 
@@ -129,8 +130,8 @@
 
 ### Added
 
-- Searchable single-select option lists — type to filter titles and descriptions without leaving the overlay
-- Responsive split-pane preview for wide terminals — selected options show a details pane while narrow terminals fall back to the single-column list
+- Searchable single-select option lists: type to filter titles and descriptions without leaving the overlay
+- Responsive split-pane preview for wide terminals: selected options show a details pane while narrow terminals fall back to the single-column list
 - Regression coverage for searchable selection, split-pane rendering, narrow-width fallback, overlay freeform metadata, and wrapping edge cases
 
 ### Changed
@@ -149,15 +150,15 @@
 
 ### Added
 
-- Markdown rendering for context sections — uses `Markdown` component with `getMarkdownTheme` when available, falls back to plain `Text`
+- Markdown rendering for context sections: uses `Markdown` component with `getMarkdownTheme` when available, falls back to plain `Text`
 - `rawKeyHint()` integration for consistent key hint styling in help text
-- Event emission via `pi.events.emit()` — `ask:answered` and `ask:cancelled` events for external listeners
+- Event emission via `pi.events.emit()`: `ask:answered` and `ask:cancelled` events for external listeners
 - Partial update (`onUpdate`) emitted before showing the overlay, so `renderResult` can display a waiting state while the dialog is open
 - `minWidth` overlay option (40 chars) to prevent the overlay from collapsing on narrow terminals
-- AbortSignal wiring in overlay mode — agent cancellation auto-dismisses the dialog
+- AbortSignal wiring in overlay mode: agent cancellation auto-dismisses the dialog
 - Timeout support in overlay mode (previously only worked in fallback input mode)
-- Expanded result rendering in `renderResult` — shows question, context, and per-option markers (● selected / ○ unselected)
-- `index.test.ts` — test suite covering narrow-terminal overlay, partial-update rendering, and expanded multi-select markers
+- Expanded result rendering in `renderResult`: shows question, context, and per-option markers (● selected / ○ unselected)
+- `index.test.ts`: test suite covering narrow-terminal overlay, partial-update rendering, and expanded multi-select markers
 
 ### Changed
 
@@ -179,7 +180,7 @@
 
 ### Added
 
-- `single-select-layout.ts` — pure rendering logic with text wrapping, numbered items, viewport scrolling, and position indicators ([`7a4c239`](https://github.com/edlsh/pi-ask-user/commit/7a4c239))
+- `single-select-layout.ts`: pure rendering logic with text wrapping, numbered items, viewport scrolling, and position indicators ([`7a4c239`](https://github.com/edlsh/pi-ask-user/commit/7a4c239))
 
 ## [0.3.0](https://github.com/edlsh/pi-ask-user/releases/tag/v0.3.0) - 2026-03-13
 
@@ -195,7 +196,7 @@
 
 ### Fixed
 
-- Documentation improvements — moved demo section to top of README, simplified skill spec ([`e2f6a57`](https://github.com/edlsh/pi-ask-user/commit/e2f6a57), [`e09d130`](https://github.com/edlsh/pi-ask-user/commit/e09d130), [`0fc7f99`](https://github.com/edlsh/pi-ask-user/commit/0fc7f99))
+- Documentation improvements: moved demo section to top of README, simplified skill spec ([`e2f6a57`](https://github.com/edlsh/pi-ask-user/commit/e2f6a57), [`e09d130`](https://github.com/edlsh/pi-ask-user/commit/e09d130), [`0fc7f99`](https://github.com/edlsh/pi-ask-user/commit/0fc7f99))
 
 ## [0.2.0](https://github.com/edlsh/pi-ask-user/releases/tag/v0.2.0) - 2026-02-16
 
@@ -208,4 +209,4 @@
 
 ### Added
 
-- Initial public release — interactive `ask_user` tool with multi-select and freeform input UI ([`9077284`](https://github.com/edlsh/pi-ask-user/commit/9077284))
+- Initial public release: interactive `ask_user` tool with multi-select and freeform input UI ([`9077284`](https://github.com/edlsh/pi-ask-user/commit/9077284))

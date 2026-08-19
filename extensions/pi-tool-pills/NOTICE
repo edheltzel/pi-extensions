@@ -1,0 +1,9 @@
+pi-tool-pills
+Copyright (c) 2025 tomsej
+Copyright (c) 2026 Ed Heltzel
+
+This workspace is an Atlas-owned port of tomsej's tool-pills extension
+from https://github.com/tomsej/pi-ext (MIT). The write/edit renderer is
+based on pi-diff by @heyhuynhgiabuu
+(https://github.com/buddingnewinsights/pi-diff). The original MIT license
+text is preserved in LICENSE.

@@ -49,6 +49,14 @@
       "entry": ["src/index.ts", "tests/**/*.{unit,integration,e2e}.test.ts"],
       "project": ["src/**/*.ts", "tests/**/*.ts"]
     },
+    "extensions/pi-leader-key": {
+      "entry": ["src/index.ts", "tests/**/*.{unit,integration,e2e}.test.ts"],
+      "project": ["src/**/*.ts", "tests/**/*.ts"]
+    },
+    "extensions/pi-tool-pills": {
+      "entry": ["src/index.ts", "tests/**/*.{unit,integration,e2e}.test.ts"],
+      "project": ["src/**/*.ts", "tests/**/*.ts"]
+    },
     "packages/pi-bits": {
       "entry": ["src/*.ts"],
       "project": ["src/**/*.ts"]

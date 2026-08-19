@@ -1,0 +1,66 @@
+{
+  "name": "@edheltzel/pi-tool-pills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Colored tool pills and Shiki diffs for Pi built-in tools",
+  "keywords": [
+    "diff",
+    "extension",
+    "pi",
+    "pi-coding-agent",
+    "pi-package",
+    "tool-pills"
+  ],
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/pi-tool-pills#readme",
+  "bugs": {
+    "url": "https://github.com/edheltzel/pi-extensions/issues"
+  },
+  "license": "MIT",
+  "author": "Ed Heltzel",
+  "contributors": [
+    "tomsej",
+    "heyhuynhgiabuu"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edheltzel/pi-extensions.git",
+    "directory": "extensions/pi-tool-pills"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run --root ../.. extensions/pi-tool-pills/tests",
+    "test:watch": "vitest --root ../.. extensions/pi-tool-pills/tests",
+    "tsc": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@shikijs/cli": "^3.15.0",
+    "diff": "^8.0.2",
+    "shiki": "^3.15.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.81.1",
+    "@earendil-works/pi-tui": ">=0.81.1"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  }
+}

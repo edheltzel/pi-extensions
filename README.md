@@ -11,6 +11,8 @@ The root Pi manifest exposes these Atlas-owned private workspaces:
 - [`pi-anti-slop`](./extensions/pi-anti-slop/README.md) - substance-defect review and repair skills plus a local house-style gate
 - [`pi-better-ask-user`](./extensions/pi-better-ask-user/README.md) - interactive decision UI, decision-gate skill, and optional Herdr integration
 - [`pi-better-btw`](./extensions/pi-better-btw/README.md) - temporary in-memory side conversation overlay
+- [`pi-leader-key`](./extensions/pi-leader-key/README.md) - Ctrl+X leader-key command palette
+- [`pi-tool-pills`](./extensions/pi-tool-pills/README.md) - colored tool pills and Shiki diffs for built-in tools
 
 The collection is a single Git-installable Pi package. The tutorial below explains how to install it, select its resources, develop against a local checkout, and publish updates.
 
@@ -56,10 +58,10 @@ Install the Atlas collection from GitHub for normal use:
 pi install git:github.com/edheltzel/pi-extensions
 ```
 
-Install a package from npm:
+Install a package from Git:
 
 ```sh
-pi install npm:pi-compact-transcript
+pi install git:github.com/avhagedorn/pi-compact-transcript
 ```
 
 During development, install a workspace directly from this checkout:
@@ -120,7 +122,7 @@ Update one package:
 
 ```sh
 pi update git:github.com/edheltzel/pi-extensions
-pi update npm:pi-compact-transcript
+pi update git:github.com/avhagedorn/pi-compact-transcript
 ```
 
 `pi update --all` also updates the Pi application itself. Versioned npm packages and Git packages installed with an explicit tag or commit are pinned; the general update command does not move them to a new version or ref. Install the desired new ref explicitly when you want to move a pinned package:
@@ -211,10 +213,9 @@ These workspaces are not distributed individually. Footer and trust-all-projects
 
 ### 3rd party (not mine)
 
-- [`npm:@dietrichgebert/ponytail`](https://github.com/DietrichGebert/ponytail) - Lazy senior-dev mode that prefers reuse, stdlib, and native features over new code.
-- [`npm:pi-compact-transcript`](https://github.com/avhagedorn/pi-compact-transcript) - Collapses tool calls into one-line previews and adds a per-run summary.
-- [`npm:@calesennett/pi-codex-fast`](https://www.npmjs.com/package/@calesennett/pi-codex-fast) - Adds OpenAI Codex `/fast` mode.
-- [`npm:pi-codex-status`](https://github.com/lhl/pi-codex-status) - `/codex:status` shows OpenAI Codex usage info.
+- [`git:github.com/DietrichGebert/ponytail`](https://github.com/DietrichGebert/ponytail) - Lazy senior-dev mode that prefers reuse, stdlib, and native features over new code.
+- [`git:github.com/avhagedorn/pi-compact-transcript`](https://github.com/avhagedorn/pi-compact-transcript) - Collapses tool calls into one-line previews and adds a per-run summary.
+- [`git:github.com/calesennett/pi-codex-fast`](https://github.com/calesennett/pi-codex-fast) - Adds OpenAI Codex `/fast` mode.
 
 ## Packages
 

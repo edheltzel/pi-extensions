@@ -1,0 +1,8 @@
+pi-leader-key
+Copyright (c) 2025 tomsej
+Copyright (c) 2026 Ed Heltzel
+
+This workspace is an Atlas-owned port of tomsej's leader-key extension
+from https://github.com/tomsej/pi-ext (MIT). Overlay framing and thinking
+role colors that originally lived in that repository's shared helpers are
+vendored here. The original MIT license text is preserved in LICENSE.

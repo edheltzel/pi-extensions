@@ -31,6 +31,7 @@ import {
   wrapTextWithAnsi,
 } from "@earendil-works/pi-tui";
 import { beginBetterAskUserHerdrWait } from "./herdr";
+import { beginBetterAskUserOrcaWait } from "./orca";
 import { renderSingleSelectRows, type QuestionOption } from "./single-select-layout";
 
 import { readFile } from "node:fs/promises";
@@ -62,14 +63,14 @@ function StringEnum<const T extends readonly string[]>(
 /**
  * `getMarkdownTheme()` returns a bag of closures that read through a Proxy
  * over the host's theme singleton. The Proxy only throws on property access,
- * not when the bag itself is constructed — so a naive
+ * not when the bag itself is constructed, so a naive
  * `try { getMarkdownTheme() } catch {}` silently lets a broken bag escape
  * and crashes mid-render the first time pi-tui's Markdown calls
  * `mdTheme.bold(...)`.
  *
  * That broken-bag scenario shows up whenever this extension's bundled copy
  * of `@earendil-works/pi-coding-agent` is a different module instance than
- * the host's — e.g. an older Pi still on the legacy
+ * the host's, e.g. an older Pi still on the legacy
  * `@mariozechner/pi-coding-agent` scope (≤ 0.73.1) where npm cannot dedupe
  * across scopes, so our copy's theme singleton is never initialised
  * (`globalThis[Symbol.for("@earendil-works/pi-coding-agent:theme")]` is
@@ -285,7 +286,7 @@ function coerceOption(option: unknown): QuestionOption | null {
 function formatOptionsForMessage(options: QuestionOption[]): string {
   return options
     .map((option, index) => {
-      const desc = option.description ? ` — ${option.description}` : "";
+      const desc = option.description ? ` - ${option.description}` : "";
       return `${index + 1}. ${option.title}${desc}`;
     })
     .join("\n");
@@ -336,7 +337,7 @@ function formatResponseSummary(response: BetterAskUserResponse): string {
   if (response.kind === "freeform") return response.text;
 
   const selections = response.selections.join(", ");
-  return response.comment ? `${selections} — ${response.comment}` : selections;
+  return response.comment ? `${selections} - ${response.comment}` : selections;
 }
 
 function buildCommentPrompt(prompt: string, selections: string[]): string {
@@ -789,7 +790,7 @@ class MultiSelectList implements Component {
       if (this.isFreeformRow(i)) {
         const label = theme.fg("text", theme.bold("Type something."));
         const desc = theme.fg("muted", "Enter a custom response");
-        const line = `${prefix}   ${label} ${theme.fg("dim", "—")} ${desc}`;
+        const line = `${prefix}   ${label} ${theme.fg("dim", "-")} ${desc}`;
         lines.push(truncateToWidth(line, width, ""));
         continue;
       }
@@ -2037,6 +2038,19 @@ async function betterAskUserViaDialogs(
   return createSelectionResponse([selected], comment);
 }
 
+function beginBetterAskUserHostWaits(
+  events: { emit(name: string, payload: unknown): void },
+  question: string,
+) {
+  const herdrWait = beginBetterAskUserHerdrWait(events);
+  const orcaWait = beginBetterAskUserOrcaWait(events, { question });
+  return {
+    async finish() {
+      await Promise.all([herdrWait?.finish(), orcaWait?.finish()]);
+    },
+  };
+}
+
 export default function (pi: ExtensionAPI) {
   const betterAskUserTool = {
     name: "better_ask_user",
@@ -2154,7 +2168,7 @@ export default function (pi: ExtensionAPI) {
         const prompt = normalizedContext
           ? `${question}\n\nContext:\n${normalizedContext}`
           : question;
-        const herdrWait = beginBetterAskUserHerdrWait(pi.events);
+        const hostWaits = beginBetterAskUserHostWaits(pi.events, question);
         let answer: string | undefined;
         try {
           answer = await ctx.ui.input(
@@ -2163,7 +2177,7 @@ export default function (pi: ExtensionAPI) {
             timeout ? { timeout } : undefined,
           );
         } finally {
-          await herdrWait?.finish();
+          await hostWaits.finish();
         }
         const response = createFreeformResponse(answer);
 
@@ -2208,7 +2222,7 @@ export default function (pi: ExtensionAPI) {
       let overlayHandle: OverlayHandle | undefined;
       let removeOverlayInputListener: (() => void) | undefined;
       let hasAnnouncedHide = false;
-      const herdrWait = beginBetterAskUserHerdrWait(pi.events);
+      const hostWaits = beginBetterAskUserHostWaits(pi.events, question);
       try {
         const customFactory = (
           tui: TUI,
@@ -2258,7 +2272,7 @@ export default function (pi: ExtensionAPI) {
             if (nextHidden && !hasAnnouncedHide) {
               hasAnnouncedHide = true;
               ctx.ui.notify?.(
-                `better_ask_user hidden — press ${overlayToggle.spec} to reopen`,
+                `better_ask_user hidden - press ${overlayToggle.spec} to reopen`,
                 "info",
               );
             }
@@ -2298,7 +2312,7 @@ export default function (pi: ExtensionAPI) {
         };
       } finally {
         removeOverlayInputListener?.();
-        await herdrWait?.finish();
+        await hostWaits.finish();
       }
 
       if (result === null) {
@@ -2387,7 +2401,7 @@ export default function (pi: ExtensionAPI) {
           const selectedTitles = new Set(response.selections);
           text += "\n" + theme.fg("dim", "Options:");
           for (const opt of details.options) {
-            const desc = opt.description ? ` — ${opt.description}` : "";
+            const desc = opt.description ? ` - ${opt.description}` : "";
             const marker = selectedTitles.has(opt.title)
               ? theme.fg("success", "●")
               : theme.fg("dim", "○");

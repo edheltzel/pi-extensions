@@ -246,8 +246,18 @@ function enableHerdr(): void {
   process.env.HERDR_PANE_ID = "pane-test";
 }
 
+function enableOrca(): void {
+  process.env.ORCA_AGENT_HOOK_PORT = "1";
+  process.env.ORCA_AGENT_HOOK_TOKEN = "test-token";
+  process.env.ORCA_PANE_KEY = "pane-test";
+}
+
 function herdrEvents(): Array<{ name: string; payload: any }> {
   return emittedEvents.filter((event) => event.name === "herdr:blocked");
+}
+
+function orcaEvents(): Array<{ name: string; payload: any }> {
+  return emittedEvents.filter((event) => event.name === "orca:blocked");
 }
 
 async function setupExtension(): Promise<{
@@ -293,20 +303,33 @@ function createTheme() {
 }
 
 describe("better_ask_user", () => {
-  const originalHerdrEnv = {
+  const originalHostEnv = {
     HERDR_ENV: process.env.HERDR_ENV,
     HERDR_SOCKET_PATH: process.env.HERDR_SOCKET_PATH,
     HERDR_PANE_ID: process.env.HERDR_PANE_ID,
+    ORCA_AGENT_HOOK_PORT: process.env.ORCA_AGENT_HOOK_PORT,
+    ORCA_AGENT_HOOK_TOKEN: process.env.ORCA_AGENT_HOOK_TOKEN,
+    ORCA_PANE_KEY: process.env.ORCA_PANE_KEY,
+    ORCA_AGENT_HOOK_ENDPOINT: process.env.ORCA_AGENT_HOOK_ENDPOINT,
   };
   const clearHerdrEnv = () => {
     delete process.env.HERDR_ENV;
     delete process.env.HERDR_SOCKET_PATH;
     delete process.env.HERDR_PANE_ID;
   };
+  const clearOrcaEnv = () => {
+    delete process.env.ORCA_AGENT_HOOK_PORT;
+    delete process.env.ORCA_AGENT_HOOK_TOKEN;
+    delete process.env.ORCA_PANE_KEY;
+    delete process.env.ORCA_AGENT_HOOK_ENDPOINT;
+  };
 
-  beforeAll(clearHerdrEnv);
+  beforeAll(() => {
+    clearHerdrEnv();
+    clearOrcaEnv();
+  });
   afterAll(() => {
-    for (const [key, value] of Object.entries(originalHerdrEnv)) {
+    for (const [key, value] of Object.entries(originalHostEnv)) {
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;
     }
@@ -443,6 +466,140 @@ describe("better_ask_user", () => {
       );
 
       expect(herdrEvents()).toEqual([]);
+    });
+  });
+
+  describe.sequential("Orca lifecycle", () => {
+    beforeEach(clearOrcaEnv);
+    afterEach(clearOrcaEnv);
+
+    test("emits no Orca events outside a complete Orca hook environment", async () => {
+      const tool = await setupTool();
+
+      await tool.execute("tool-call-id", { question: "What should we do?" }, undefined, undefined, {
+        hasUI: true,
+        ui: { input: async () => "Proceed" },
+      });
+
+      expect(orcaEvents()).toEqual([]);
+    });
+
+    test("marks no-options freeform waiting active then inactive", async () => {
+      enableOrca();
+      const tool = await setupTool();
+
+      const result = await tool.execute(
+        "tool-call-id",
+        { question: "What should we do?" },
+        undefined,
+        undefined,
+        {
+          hasUI: true,
+          ui: {
+            input: async () => {
+              expect(orcaEvents()).toEqual([
+                { name: "orca:blocked", payload: { active: true, label: "better_ask_user" } },
+              ]);
+              return "Proceed";
+            },
+          },
+        },
+      );
+
+      expect(result.details.response).toEqual({ kind: "freeform", text: "Proceed" });
+      expect(orcaEvents()).toEqual([
+        { name: "orca:blocked", payload: { active: true, label: "better_ask_user" } },
+        { name: "orca:blocked", payload: { active: false, label: "better_ask_user" } },
+      ]);
+    });
+
+    test("marks option waiting active then inactive", async () => {
+      enableOrca();
+      const tool = await setupTool();
+
+      const result = await tool.execute(
+        "tool-call-id",
+        { question: "Which option?", options: ["A", "B"] },
+        undefined,
+        undefined,
+        {
+          hasUI: true,
+          ui: {
+            custom: async () => {
+              expect(orcaEvents()).toEqual([
+                { name: "orca:blocked", payload: { active: true, label: "better_ask_user" } },
+              ]);
+              return { kind: "selection", selections: ["A"] };
+            },
+          },
+        },
+      );
+
+      expect(result.details.response).toEqual({ kind: "selection", selections: ["A"] });
+      expect(orcaEvents()).toEqual([
+        { name: "orca:blocked", payload: { active: true, label: "better_ask_user" } },
+        { name: "orca:blocked", payload: { active: false, label: "better_ask_user" } },
+      ]);
+    });
+
+    test("cleans up exactly once when option waiting is cancelled", async () => {
+      enableOrca();
+      const tool = await setupTool();
+
+      const result = await tool.execute(
+        "tool-call-id",
+        { question: "Which option?", options: ["A", "B"] },
+        undefined,
+        undefined,
+        { hasUI: true, ui: { custom: async () => null } },
+      );
+
+      expect(result.details.cancelled).toBe(true);
+      expect(orcaEvents()).toEqual([
+        { name: "orca:blocked", payload: { active: true, label: "better_ask_user" } },
+        { name: "orca:blocked", payload: { active: false, label: "better_ask_user" } },
+      ]);
+    });
+
+    test("cleans up exactly once when the option UI throws", async () => {
+      enableOrca();
+      const tool = await setupTool();
+
+      const result = await tool.execute(
+        "tool-call-id",
+        { question: "Which option?", options: ["A", "B"] },
+        undefined,
+        undefined,
+        {
+          hasUI: true,
+          ui: {
+            custom: async () => {
+              throw new Error("UI exploded");
+            },
+          },
+        },
+      );
+
+      expect(result.isError).toBe(true);
+      expect(orcaEvents()).toEqual([
+        { name: "orca:blocked", payload: { active: true, label: "better_ask_user" } },
+        { name: "orca:blocked", payload: { active: false, label: "better_ask_user" } },
+      ]);
+    });
+
+    test("does not mark Orca blocked for preflight failures", async () => {
+      enableOrca();
+      const tool = await setupTool();
+
+      await tool.execute(
+        "tool-call-id",
+        { question: "Which option?", options: [{}] },
+        undefined,
+        undefined,
+        { hasUI: true, ui: {} },
+      );
+
+      expect(orcaEvents()).toEqual([]);
     });
   });
 
@@ -2356,7 +2513,7 @@ describe("better_ask_user", () => {
     // the extension ever stops gating through `safeMarkdownTheme()`, the
     // throw surfaces at one of the two callsites: the constructor's
     // context branch, or the split-pane preview built by
-    // `buildPreviewLines` — both must remain quiet.
+    // `buildPreviewLines`; both must remain quiet.
     const tool = await setupTool();
     let constructionError: unknown;
     let previewError: unknown;

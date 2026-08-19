@@ -1,0 +1,67 @@
+{
+  "name": "@edheltzel/pi-leader-key",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ctrl+X leader-key command palette for Pi",
+  "keywords": [
+    "extension",
+    "leader-key",
+    "pi",
+    "pi-coding-agent",
+    "pi-package"
+  ],
+  "homepage": "https://github.com/edheltzel/pi-extensions/tree/main/extensions/pi-leader-key#readme",
+  "bugs": {
+    "url": "https://github.com/edheltzel/pi-extensions/issues"
+  },
+  "license": "MIT",
+  "author": "Ed Heltzel",
+  "contributors": [
+    "tomsej"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edheltzel/pi-extensions.git",
+    "directory": "extensions/pi-leader-key"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run --root ../.. extensions/pi-leader-key/tests",
+    "test:watch": "vitest --root ../.. extensions/pi-leader-key/tests",
+    "tsc": "tsc -p tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-agent-core": ">=0.81.1",
+    "@earendil-works/pi-ai": ">=0.81.1",
+    "@earendil-works/pi-coding-agent": ">=0.81.1",
+    "@earendil-works/pi-tui": ">=0.81.1"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-agent-core": {
+      "optional": true
+    },
+    "@earendil-works/pi-ai": {
+      "optional": true
+    },
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  }
+}

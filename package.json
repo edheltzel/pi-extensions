@@ -42,7 +42,9 @@
     "extensions": [
       "./extensions/pi-anti-slop/src/index.ts",
       "./extensions/pi-better-ask-user/src/index.ts",
-      "./extensions/pi-better-btw/src/index.ts"
+      "./extensions/pi-better-btw/src/index.ts",
+      "./extensions/pi-leader-key/src/index.ts",
+      "./extensions/pi-tool-pills/src/index.ts"
     ],
     "skills": [
       "./extensions/pi-anti-slop/skills",

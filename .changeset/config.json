@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.3/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "richardgill/pi-extensions" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "edheltzel/pi-extensions" }],
   "commit": false,
   "fixed": [],
   "linked": [],

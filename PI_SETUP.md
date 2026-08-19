@@ -1,6 +1,7 @@
 # My Pi setup
 
-- I use Pi with OpenAI Codex `gpt-5.6-sol` at the High thinking level (OpenAI has a generous policy allowing you to use your own harness)
+- Theme: Eldritch
+- Default model: xAI `grok-4.6` at High thinking. I start there and switch models with `/model` as the work needs it.
 - My [`AGENTS.md`](https://github.com/edheltzel/nix/blob/main/built/ai-agents/pi/AGENTS.md?plain=1) ([template](https://github.com/edheltzel/nix/blob/main/flake/modules/home-manager/dot-files/ai-agents/shared/partials/AGENTS.md.hbs?plain=1))
 - My Pi [`settings.json`](https://github.com/edheltzel/nix/blob/main/out-of-store-config/ai-agents/pi/settings.json)
 
@@ -14,7 +15,7 @@ The commands below assume a checkout of this repository. The Atlas Git collectio
 
 ## Install the Atlas Git collection
 
-The repository root exposes the Atlas-owned Anti-Slop, Better Ask User, and Better BTW resources as one Git package:
+The repository root exposes the Atlas-owned Anti-Slop, Better Ask User, Better BTW, Leader Key, and Tool Pills resources as one Git package:
 
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
@@ -134,10 +135,10 @@ pi install ./packages/pi-bits
 Ponytail is a third-party package and is not copied into this repository:
 
 ```sh
-pi install npm:@dietrichgebert/ponytail
+pi install git:github.com/DietrichGebert/ponytail
 ```
 
-Update it with `pi update npm:@dietrichgebert/ponytail`.
+Update it with `pi update git:github.com/DietrichGebert/ponytail`.
 
 [Source and documentation](https://github.com/DietrichGebert/ponytail)
 
@@ -146,10 +147,10 @@ Update it with `pi update npm:@dietrichgebert/ponytail`.
 Compact transcript is a third-party package and is not copied into this repository:
 
 ```sh
-pi install npm:pi-compact-transcript
+pi install git:github.com/avhagedorn/pi-compact-transcript
 ```
 
-Update it with `pi update npm:pi-compact-transcript`.
+Update it with `pi update git:github.com/avhagedorn/pi-compact-transcript`.
 
 [Source and documentation](https://github.com/avhagedorn/pi-compact-transcript)
 
@@ -158,31 +159,39 @@ Update it with `pi update npm:pi-compact-transcript`.
 Adds OpenAI Codex `/fast` mode.
 
 ```sh
-pi install npm:@calesennett/pi-codex-fast
+pi install git:github.com/calesennett/pi-codex-fast
 ```
 
-[Package](https://www.npmjs.com/package/@calesennett/pi-codex-fast)
+[Source and documentation](https://github.com/calesennett/pi-codex-fast)
 
-## View Codex usage
+## Currently installed npm packages
 
-Adds `/codex:status` for viewing OpenAI Codex usage information.
+These are live on this machine and are not copied into this repository:
 
-```sh
-pi install npm:pi-codex-status
-```
-
-[Source and documentation](https://github.com/lhl/pi-codex-status)
+- `npm:pi-mcp-adapter` - MCP adapter for Pi
+- `npm:pi-web-access` - web search, URL fetch, GitHub clone, PDF and video analysis
+- `npm:@devkade/pi-plan` - read-only plan mode with approval-based execution
+- `npm:pi-simplify` - review recent diffs for clarity and maintainability
+- `npm:pi-add-dir` - add external directories and their agent context files
+- `npm:pi-prompt-template-model` - prompt-template model selector
+- `npm:@narumitw/pi-goal` - autonomous `/goal` completion
+- `npm:@tintinweb/pi-subagents` - Claude Code-style autonomous sub-agents
+- `npm:pi-lens` - live LSP, lint, format, and structural feedback
+- `npm:@vndv/pi-codegraph` - CodeGraph tools for Pi
+- `npm:pi-unified-exec` - long-lived shell sessions with `write_stdin`
+- `npm:@ogulcancelik/pi-codex-compaction` - Codex remote compaction
+- `npm:@calesennett/pi-codex-fast` - Codex Fast and Ultrafast tiers
+- `npm:@plannotator/pi-extension` - interactive plan and PR annotation
 
 ## Install all extensions
 
 ```sh
 pi install git:github.com/edheltzel/pi-extensions
-pi install npm:@dietrichgebert/ponytail
-pi install npm:pi-compact-transcript
+pi install git:github.com/DietrichGebert/ponytail
+pi install git:github.com/avhagedorn/pi-compact-transcript
 pi install ./packages/pi-bits
 pi install ./extensions/context-commands
 pi install ./extensions/project-resources
 pi install ./extensions/pi-up-history
-pi install npm:@calesennett/pi-codex-fast
-pi install npm:pi-codex-status
+pi install git:github.com/calesennett/pi-codex-fast
 ```

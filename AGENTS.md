@@ -7,9 +7,9 @@ Develop independently loadable Pi extensions and supporting packages in one pnpm
 ## Ownership
 
 - `extensions/` owns Pi extension workspaces. Public and private extensions use the same source layout; private workspaces retain `"private": true`.
-- `extensions/pi-anti-slop/`, `extensions/pi-better-ask-user/`, and `extensions/pi-better-btw/` are Atlas-owned. The remaining `extensions/` workspaces are the inherited Richard Gill stack, loaded from this repo rather than `npm:@richardgill/*`.
+- `extensions/` owns the repository's Atlas extension workspaces, including `pi-anti-slop`, `pi-better-ask-user`, `pi-better-btw`, `pi-leader-key`, and `pi-tool-pills`.
 - `packages/` owns shared libraries, utilities, and composite distributions such as `pi-bits`; it must not hold copied third-party repositories.
-- Third-party Pi packages are referenced from Pi settings or setup documentation, never copied into this repository. `pi-compact-transcript` is installed as `npm:pi-compact-transcript`.
+- Third-party Pi packages are referenced from Pi settings or setup documentation, never copied into this repository. `pi-compact-transcript` is installed from `git:github.com/avhagedorn/pi-compact-transcript`.
 - Package-level `AGENTS.md` files own extension-specific behavior, licensing, and verification rules.
 
 ## Local Contracts
@@ -18,7 +18,7 @@ Develop independently loadable Pi extensions and supporting packages in one pnpm
 - Keep TypeScript source under `src/` and tests under `tests/` with `.unit.test.ts`, `.integration.test.ts`, or `.e2e.test.ts` suffixes.
 - Pi loads TypeScript through jiti; extension workspaces normally need no build step.
 - Keep each extension independently loadable through its own `package.json` `pi` manifest.
-- The root `pi` manifest is the Git collection at `git:github.com/edheltzel/pi-extensions`. Only resources listed in the root `package.json` belong to that collection; see the root README for installation paths for other workspaces. Do not also install `npm:@richardgill/*` copies of the same extensions.
+- The root `pi` manifest is the Git collection at `git:github.com/edheltzel/pi-extensions`. Only resources listed in the root `package.json` belong to that collection; see the root README for installation paths for other workspaces.
 - Atlas-owned workspaces remain private until an explicit npm publishing decision removes that safeguard and adds a release changeset.
 - Preserve upstream attribution, copyright, and split-license notices in package-level license files.
 
@@ -59,6 +59,8 @@ Interactive tests may run Pi in a bounded tmux session, send input, capture the 
 - `extensions/pi-anti-slop/AGENTS.md` - anti-authorship firewall, scanner packaging, licensing, and verification.
 - `extensions/pi-better-ask-user/AGENTS.md` - decision UI, preview workflow, Herdr integration, and verification.
 - `extensions/pi-better-btw/AGENTS.md` - temporary side-conversation overlay behavior and verification.
+- `extensions/pi-leader-key/AGENTS.md` - Ctrl+X leader palette, model pickers, and verification.
+- `extensions/pi-tool-pills/AGENTS.md` - tool pills, collapsed output, write/edit diffs, and verification.
 
 ## Maintaining this file
 

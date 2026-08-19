@@ -25,6 +25,7 @@ A Pi package that adds an interactive `better_ask_user` tool for collecting user
 - Structured `details` on all results for session state reconstruction
 - Graceful fallback when interactive UI is unavailable
 - Optional Herdr blocked-state and pending-question metadata while waiting for input
+- Optional Orca Needs You / blocked-state notifications while waiting for input
 - Bundled `better-ask-user` skill for mandatory decision-gating in high-stakes or ambiguous tasks
 - `/better-ask-preview` JSON fixture runner for model-free testing through the real Pi UI
 
@@ -109,6 +110,17 @@ Herdr integration activates automatically only when all three variables injected
 While `better_ask_user` is waiting, the extension emits `herdr:blocked` with the `better_ask_user` label and reports one pending question as the metadata token `ask: "❓1"`. Every completed waiting path clears the blocked state and token. Socket communication uses short, bounded, newline-delimited JSON requests and is best-effort: unavailable or slow Herdr sockets never prevent the prompt from opening or fail the tool.
 
 Outside a complete Herdr environment, behavior is unchanged and no Herdr lifecycle events are emitted.
+
+## Orca integration
+
+Orca integration activates automatically only when a pane has the hook coordinates Orca injects:
+
+- `ORCA_PANE_KEY`
+- `ORCA_AGENT_HOOK_PORT` and `ORCA_AGENT_HOOK_TOKEN` from the process environment, or from `ORCA_AGENT_HOOK_ENDPOINT` after an Orca restart
+
+While `better_ask_user` is waiting, the extension emits `orca:blocked` with the `better_ask_user` label and POSTs a `/hook/pi` `tool_call` using Orca's Pi `AskUserQuestion` alias so the pane can move to blocked / Needs You and fire attention notifications. Every completed waiting path emits the matching unblock event and POSTs `tool_execution_end`. Delivery is best-effort: unavailable or slow Orca hooks never prevent the prompt from opening or fail the tool. The public tool name remains `better_ask_user`; the alias exists only because current Orca builds do not treat `better_ask_user` as an ask-user tool.
+
+Outside a complete Orca hook environment, behavior is unchanged and no Orca lifecycle events are emitted.
 
 ## Tool name
 
