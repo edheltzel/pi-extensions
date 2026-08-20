@@ -1,8 +1,8 @@
 # pi-leader-key
 
-Ctrl+X leader-key command palette for [pi](https://github.com/earendil-works/pi).
+Ctrl+Q leader-key command palette for [pi](https://github.com/earendil-works/pi).
 
-Press `Ctrl+X` (or run `/lk`) to open a floating palette of grouped actions, then press a chord and an action key. The palette is an Atlas-owned port of [tomsej's leader-key extension](https://github.com/tomsej/pi-ext).
+Press `Ctrl+Q` (or run `/lk`) to open a floating palette of grouped actions, then press a chord and an action key. Pi already binds `Ctrl+X` to copy the last assistant message, so this extension does not register that shortcut. The palette is an Atlas-owned port of [tomsej's leader-key extension](https://github.com/tomsej/pi-ext).
 
 ## Install
 
@@ -28,7 +28,7 @@ This workspace remains private and is not published to npm. Run `/reload` after 
 
 ## Usage
 
-- `Ctrl+X` or `/lk` opens the leader palette
+- `Ctrl+Q` or `/lk` opens the leader palette
 - `Ctrl+M` opens the scoped-models picker directly
 - Chord keys open a group; a letter key runs an action
 - `Esc` / `Backspace` goes back or closes

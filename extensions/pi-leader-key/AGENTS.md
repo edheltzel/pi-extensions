@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Provide a Ctrl+X / `/lk` leader-key overlay that groups frequent Pi actions, including scoped-model and model-switcher flows.
+Provide a Ctrl+Q / `/lk` leader-key overlay that groups frequent Pi actions, including scoped-model and model-switcher flows.
+
+Do not bind `ctrl+x`: current Pi uses it for `app.message.copy` (and scoped-models `app.models.clearAll`), so the extension shortcut is skipped.
 
 ## Ownership
 

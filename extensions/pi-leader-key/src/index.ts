@@ -1,7 +1,7 @@
 /**
  * Leader Key Extension
  *
- * Press Ctrl+X to open a floating command palette showing available
+ * Press Ctrl+Q to open a floating command palette showing available
  * actions organised into groups (like Vim's which-key or Emacs' leader key).
  *
  * Ported from tomsej/pi-ext leader-key (MIT).
@@ -350,7 +350,7 @@ export default function leaderKeyExtension(pi: ExtensionAPI) {
     },
   });
 
-  pi.registerShortcut(Key.ctrl("x"), {
+  pi.registerShortcut(Key.ctrl("q"), {
     description: "Open Leader Key",
     handler: async (ctx) => {
       await openLeaderKey(ctx);

@@ -1,13 +1,53 @@
-import { describe, expect, it } from "vitest";
-import type { Theme } from "@earendil-works/pi-coding-agent";
-import { visibleWidth } from "@earendil-works/pi-tui";
-import { buildEntries, LeaderKeyOverlay } from "../src/index";
+import { describe, expect, it, vi } from "vitest";
+import type { ExtensionAPI, ExtensionContext, Theme } from "@earendil-works/pi-coding-agent";
+import { Key, visibleWidth } from "@earendil-works/pi-tui";
+import leaderKeyExtension, { buildEntries, LeaderKeyOverlay } from "../src/index";
 import { OverlayFrame, padToWidth } from "../src/overlay";
 
 const theme = {
   fg: (_color: string, text: string) => text,
   bold: (text: string) => text,
 } as unknown as Theme;
+
+describe("extension registration", () => {
+  it("opens the palette from Ctrl+Q and /lk without registering Ctrl+X", async () => {
+    type Shortcut = { handler: (ctx: ExtensionContext) => Promise<void> };
+    type Command = { handler: (args: string, ctx: ExtensionContext) => Promise<void> };
+
+    const shortcuts = new Map<string, Shortcut>();
+    const commands = new Map<string, Command>();
+    const pi = {
+      on: vi.fn(),
+      registerShortcut: vi.fn((key: string, shortcut: Shortcut) => {
+        shortcuts.set(key, shortcut);
+      }),
+      registerCommand: vi.fn((name: string, command: Command) => {
+        commands.set(name, command);
+      }),
+    } as unknown as ExtensionAPI;
+
+    leaderKeyExtension(pi);
+
+    expect([...shortcuts.keys()]).toEqual([Key.ctrl("q")]);
+    expect(shortcuts.has(Key.ctrl("x"))).toBe(false);
+    expect([...commands.keys()]).toContain("lk");
+
+    const shortcut = shortcuts.get(Key.ctrl("q"));
+    const command = commands.get("lk");
+    if (!shortcut || !command) throw new Error("Leader key triggers were not registered");
+
+    const custom = vi.fn(async () => null);
+    const ctx = { hasUI: true, ui: { custom } } as unknown as ExtensionContext;
+    await shortcut.handler(ctx);
+    await command.handler("", ctx);
+
+    expect(custom).toHaveBeenCalledTimes(2);
+    expect(custom.mock.calls[0]?.[1]).toMatchObject({
+      overlay: true,
+      overlayOptions: { anchor: "center", width: 80 },
+    });
+  });
+});
 
 describe("OverlayFrame", () => {
   it("pads content to a visible width", () => {

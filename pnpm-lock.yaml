@@ -7,6 +7,16 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@shikijs/cli':
+        specifier: ^3.15.0
+        version: 3.23.0
+      diff:
+        specifier: ^8.0.2
+        version: 8.0.4
+      shiki:
+        specifier: ^3.15.0
+        version: 3.23.0
     devDependencies:
       '@changesets/changelog-github':
         specifier: '=0.6.0'
